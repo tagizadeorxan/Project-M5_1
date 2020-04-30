@@ -12,11 +12,13 @@ componentDidMount() {
 getData = () => {
     let id = this.props.match.params.id;
     fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data=>data.json()).then(data=>this.setState({data}));
+    console.log("ok");
 }
 
     render() {
         let {data} = this.state;
-      console.log(data.profile);
+        console.log("ok");
+    //   console.log(data.profile);
         return (
             <div>
                {/* <p>{data.symbol}</p>
