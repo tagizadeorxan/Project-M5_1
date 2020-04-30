@@ -24,3 +24,12 @@
     bottom: 0;
     width: 100%;
 }
+
+.Balance-integer-part {
+    font-size: 25px;
+}
+
+.Balance-decimal-part {
+    font-size: 15px;
+    font-style: Roboto;
+}
