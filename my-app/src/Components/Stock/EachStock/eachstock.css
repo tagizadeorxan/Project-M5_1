@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items : center;
     width: 1000px;
-    margin-left: 20%;
+
     height: 150px;
     border-bottom: 1px dashed grey;
    
@@ -12,6 +12,8 @@
 
 .link {
     text-decoration: none;
+    display: flex;
+    justify-content: center;
 }
 
 .eachStock-row:hover {
@@ -19,7 +21,7 @@
     flex-direction: row;
     align-items : center;
     width: 1000px;
-    margin-left: 20%;
+   
     height: 150px;
     border-bottom: 1px dotted grey;
     background-color: rgba(130, 58, 224, 0.05);

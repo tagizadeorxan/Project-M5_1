@@ -24,24 +24,31 @@ handleBuy = () => {
 
     let price = this.state.value*data.profile.price;
     this.setState({price});
+
+
+
     let options = {
         method:'POST',
+        headers: {'Content-type': 'application/json'},
         
-
-
         body: JSON.stringify({
-            code: data.symbol,
             amount: data.profile.price,
-            purchasePrice: data.price
+            code: data.symbol,
+            purchasePrice: this.state.price,
         })
        
     }
-    console.log(options);
-
-    fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks",options);
+ 
+    fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks",options).then(res=>res.json()).then(res=>console.log(res));
 }
 
+delete = () =>{
 
+    fetch(`https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks/${44}`, {
+        method:'DELETE',
+    })
+
+}
 
 getData = () => {
     let id = this.props.match.params.id;
@@ -68,6 +75,7 @@ getData = () => {
                     <button onClick={this.handlePlus}>+</button>
                 </div>
                 <button onClick={this.handleBuy}>Buy</button>
+                <button onClick={this.delete}>delete</button>
             </div>
            
         )
