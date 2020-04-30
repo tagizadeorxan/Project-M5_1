@@ -80,29 +80,19 @@ class Stock extends Component {
                         })
                     }
                 </div>
-                {/* <div className='btn-group'>
-                    <button type='button' onClick={this.decreasePage}><i class="fa fa-angle-left"></i></button>
-                    <button className = 'purple' type='button' onClick={this.pageHandler} >{+currentPage}</button>
-                    <button type='button' onClick={this.pageHandler} >{+currentPage+1}</button>
-                    <button type='button' onClick={this.pageHandler} >{+currentPage+2}</button>
-                    <button type='button' onClick={this.pageHandler} >{+currentPage+3}</button>
-                    <button type='button' >...</button>
-                    <button type='button'onClick={this.pageHandler} >{lastPage}</button>
-                    <button type='button' onClick={this.increasePage}><i class="fa fa-angle-right"></i></button>
-                </div> */}
+                
                 <div className="list">
-                    
-                <Pagination className="list-pag"
+                {
+                    (!searchInput.length > 0) && 
+                    <Pagination 
                         currentPage={this.state.currentPage}
-                        totalPages={searchInput.length > 0 ? 1 : lastPage}
+                        totalPages={lastPage}
                         changeCurrentPage={this.changeCurrentPage}
                         theme="bottom-border"
                     />
-                   
+                }
                 </div>
-
-
-           </div>
+            </div>
         )
     }
 }
