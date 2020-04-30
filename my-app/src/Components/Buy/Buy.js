@@ -23,9 +23,8 @@ getData = () => {
         return (
             <div>
                 <button onClick={()=>this.props.history.goBack()}>Back</button>
-               <p>{data.symbol}</p>
+               <p>{data.profile.companyName}</p>
                <p>{data.profile.price}</p>
-               <p>{data.profile.beta}</p>
                <img atl="id" src={data.profile.image}/>
     
             </div>
