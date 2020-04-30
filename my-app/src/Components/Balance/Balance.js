@@ -24,7 +24,6 @@ class Balance extends Component {
 
     render() {
         const splitString = String(this.state.balance.toFixed(2)).split('.');
-        console.log(splitString);
         return (
             <footer className="Balance">
                 <div className="Balance-footer">
