@@ -1,0 +1,60 @@
+.buy-header{
+    display: flex;
+    justify-content: center;
+
+}
+.buy-header p {
+    color:#2FC20A;
+font-size: 48px;
+}
+.buy-header button {
+    float: left;
+    font-size:16px;
+}
+
+.buy-defaut-price {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    align-items:baseline;
+}
+
+
+.buy-defaut-price span {
+font-size:16px;
+}
+
+.buy-quantity {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 15px;
+  
+}
+.buy-quantity span {
+    width: 129px;
+    text-align: center;
+    font-size: 64px;
+    color:#833AE0;
+}
+
+.buy-quantity button {
+    background: white;
+    border: none;
+    color:#833AE0;
+}
+
+.buy-price {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.buy-price:nth-child(1){
+    font-size:55px;
+    color:pink;
+    }
+
+.buy-button{
+    display: flex;
+    justify-content: center;  
+}
