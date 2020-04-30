@@ -24,9 +24,11 @@ class Balance extends Component {
 
     render() {
         return (
-            <footer className="Balance-footer">
-                <div>Balance:</div>
-                <div>{this.state.balance.toFixed(2)}$</div>
+            <footer className="Balance">
+                <div className="Balance-footer">
+                    <div>Balance:</div>
+                    <div>{this.state.balance.toFixed(2)}$</div>
+                </div>
             </footer>
         )
     }
