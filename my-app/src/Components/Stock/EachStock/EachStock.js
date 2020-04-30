@@ -15,7 +15,7 @@ class EachStock extends Component {
         console.log(data);
         return (
 
-            <Link className="link" to={`/stock/${data.symbol}`}>
+            <Link className="linked" to={`/stock/${data.symbol}`}>
 
                 <div className="eachStock-row">
                     <div className="eachStock-row-symbol"> <div >{data.symbol}</div></div>
