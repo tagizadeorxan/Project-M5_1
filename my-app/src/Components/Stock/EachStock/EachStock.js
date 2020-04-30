@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './eachstock.css';
 
 class EachStock extends Component {
     render() {

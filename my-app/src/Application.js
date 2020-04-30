@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom"
 import Account from './Components/Account/Account';
 import Stock from './Components/Stock/Stock';
-
-
+import Balance from './Components/Balance/Balance';
+import './index';
 
 class Application extends Component {
     render() {
@@ -19,7 +19,7 @@ class Application extends Component {
             
             {/* <Route exact path='/stock/:id' component={Buy}></Route> */}
 
-            <p>balance: 1000</p>
+            <Balance/>
 
             </Router>
         )
