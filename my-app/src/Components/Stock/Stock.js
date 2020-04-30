@@ -7,10 +7,12 @@ import './stock.css';
 class Stock extends Component {
     state={
         data:[],
+        filteredData:[],
         pageSize: 4,
         currentPage: 1,
         lastPage:'',
-        pageNumChange:true
+        pageNumChange:true,
+        searchInput:''
     }
     componentDidMount(){
         this.getData()
@@ -37,6 +39,16 @@ class Stock extends Component {
         }
     }
 
+    stockFilterHandler=(e)=>{
+        const filtered=this.state.data.filter((item)=>{
+            return e.target.value.toUpperCase() == item.symbol
+        })
+        this.setState({
+            searchInput:e.target.value,
+            filteredData:filtered
+        })
+    }
+
     // pageHandler=(e)=>{
     //     this.setState({
     //         currentPage: +(e.target.innerText),
@@ -44,16 +56,15 @@ class Stock extends Component {
     // }
 
     render() {
-        const { data, pageSize, currentPage,lastPage } = this.state;
-        console.log(this.state.lastPage)
+        const { data, pageSize, currentPage,lastPage,searchInput,filteredData } = this.state;
         return (
             <div className='stock'>
                 <div className='stock-input'>
                 <img src={'/assets/search-logo.png'}/>
-                <input  type='text' placeholder='enter company ticker'></input>
+                <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'></input>
                 </div>
                 <div className='stock-arr'>
-                    {data
+                    {(searchInput.length>0?filteredData:data)
                     .slice(pageSize * (currentPage - 1), pageSize * currentPage)
                     .map((res,i) => {
                     return <EachStock key={i} data={res}/>
