@@ -3,18 +3,33 @@
     color: #FFDC40;
     height: 70px;
     display: flex;
-    justify-content: space-between;
     font-weight: bolder;
 }
 
 .Balance-footer div:first-child {
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 70px;
+    width: 7%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
 }
 
 .Balance-footer div:last-child {
-    margin: auto auto;
+    /* margin: 0 auto; */
+    /* margin-left: 35%; */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+}
+
+.balance-box {
+    width: 90%;
+    margin: 0px;
+}
+
+.box2 {
+    margin: 0 auto;
 }
 
 
@@ -33,3 +48,4 @@
     font-size: 15px;
     font-style: Roboto;
 }
+

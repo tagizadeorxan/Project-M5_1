@@ -10,4 +10,6 @@
 
 .Account-content {
     min-width: 760px;
+    display: flex;
+    justify-content: center;
 }

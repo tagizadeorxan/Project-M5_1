@@ -24,15 +24,17 @@ class Balance extends Component {
 
     render() {
         const splitString = String(this.state.balance.toFixed(2)).split('.');
-        console.log(splitString);
         return (
             <footer className="Balance">
                 <div className="Balance-footer">
                     <div>Balance:</div>
-                    <div>
-                        <span className="Balance-integer-part">{splitString[0]}</span>
-                        .
-                        <span className="Balance-decimal-part">{splitString[1]}$</span>
+                    <div className="box2">
+                        <div className="balance-box">
+                            <span className="Balance-integer-part">{splitString[0]}</span>
+                            .
+                            <span className="Balance-decimal-part">{splitString[1]}$</span>
+                        </div>
+                            
                     </div>
                 </div>
             </footer>

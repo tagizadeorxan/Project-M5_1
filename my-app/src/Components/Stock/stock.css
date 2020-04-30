@@ -17,6 +17,7 @@
     margin-top:33px;
     box-sizing: border-box;
     display: flex;
+    margin-bottom: 33px;
 }
 .stock-input input{
     font-family: 'Roboto', sans-serif;
@@ -55,7 +56,12 @@
 }
 
 .list {
+    margin-top: 33px;
     display: flex;
     justify-content: center;
 }
 
+.is-active li {
+    font-weight: 900 !important;
+    border-bottom: 3px solid #833ae0 !important;
+}

@@ -35,4 +35,7 @@
     padding-top: 25px;
 }
 
-
+.Header-links-wrapper li a:hover:not(.active) {
+    color: #FFDC40 !important;
+    border-bottom: 3px solid #000000;
+}

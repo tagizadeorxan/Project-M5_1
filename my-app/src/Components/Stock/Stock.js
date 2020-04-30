@@ -43,7 +43,7 @@ class Stock extends Component {
 
     stockFilterHandler=(e)=>{
         const filtered=this.state.data.filter((item)=>{
-            return e.target.value.toUpperCase() == item.symbol
+            return e.target.value.toUpperCase() === item.symbol
         })
         this.setState({
             searchInput: e.target.value,
@@ -69,14 +69,15 @@ class Stock extends Component {
         return (
             <div className='stock'>
                 <div className='stock-input'>
-                <img src={'/assets/search-logo.png'}/>
+                <img src={'/assets/search-logo.png'} alt="magnifier"/>
                 <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'></input>
                 </div>
                 <div className='stock-arr'>
-                    {(searchInput.length>0?filteredData:data)
-                    .slice(pageSize * (currentPage - 1), pageSize * currentPage)
-                    .map((res,i) => {
-                    return <EachStock key={i} data={res}/>
+                    {
+                        (searchInput.length>0?filteredData:data)
+                        .slice(pageSize * (currentPage - 1), pageSize * currentPage)
+                        .map((res, i) => {
+                            return <EachStock key={i} data={res}/>
                         })
                     }
                 </div>
