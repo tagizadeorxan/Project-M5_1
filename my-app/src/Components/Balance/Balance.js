@@ -4,7 +4,9 @@ class Balance extends Component {
 
     render() {
         return (
-            <p></p>
+            <footer>
+                
+            </footer>
         )
     }
 }

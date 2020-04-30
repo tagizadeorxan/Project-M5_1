@@ -4,7 +4,7 @@
 }
 
 .Header-wrapper nav {
-    min-width: 320px;
+    min-width: 350px;
 }
 
 .Header-wrapper ul {
@@ -13,17 +13,16 @@
     list-style: none;
 }
 
-.Header-wrapper li {
-    padding: 10px 20px;
-    
+.Header-wrapper li {    
     font-family: Roboto;
-
-    /* text-decoration: none; */
-    /* textDecoration: none; */
 }
 
-.Header-wrapper li > .active {
-    border-bottom: 1px solid #833AE0;
+.Header-image-wrapper li  {
+    text-decoration: none;
+}
+
+.active {
+    border-bottom: 3px solid #833AE0;
 }
 
 .Header-image-wrapper {
