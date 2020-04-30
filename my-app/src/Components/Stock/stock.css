@@ -50,3 +50,9 @@
     color: purple;
     font-weight: bold;
 }
+
+.list {
+    display: flex;
+    justify-content: center;
+}
+

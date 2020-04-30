@@ -90,15 +90,15 @@ class Stock extends Component {
                     <button type='button'onClick={this.pageHandler} >{lastPage}</button>
                     <button type='button' onClick={this.increasePage}><i class="fa fa-angle-right"></i></button>
                 </div> */}
-                <div>
+                <div className="list">
                     
-                <Pagination
+                <Pagination className="list-pag"
                         currentPage={this.state.currentPage}
                         totalPages={searchInput.length > 0 ? 1 : lastPage}
                         changeCurrentPage={this.changeCurrentPage}
                         theme="bottom-border"
                     />
-                    <h2>current Page:{this.state.currentPage}</h2>
+                    {/* <h2>current Page:{this.state.currentPage}</h2> */}
                 </div>
 
 
