@@ -47,12 +47,11 @@ class Stock extends Component {
                 </svg>
                 <input  type='text' placeholder='enter company ticker'></input>
                 </div>
-                <EachStock/>
                 <div>
                     {data
                     .slice(pageSize * (currentPage - 1), pageSize * currentPage)
-                    .map((res) => {
-                    return <p>{ res.symbol }</p>
+                    .map((res,i) => {
+                    return <EachStock key={i} data={res}/>
                         })
                     }
                 </div>
