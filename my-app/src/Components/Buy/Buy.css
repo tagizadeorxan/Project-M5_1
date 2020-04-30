@@ -54,8 +54,10 @@
     font-size: 48px;
     color:#2FC20A;
     margin: 0 100px;
-    white-space: nowrap;
+    word-wrap: break-word;
+    width: 800px;
 }
+
 
 
 
