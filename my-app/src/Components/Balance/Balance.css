@@ -1,0 +1,18 @@
+.Balance-footer {
+    background-color: #833AE0;
+    color: #FFDC40;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bolder;
+}
+
+.Balance-footer div:first-child {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 70px;
+}
+
+.Balance-footer div:last-child {
+    margin: auto auto;
+}

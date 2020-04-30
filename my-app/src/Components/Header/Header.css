@@ -5,6 +5,7 @@
 
 .Header-wrapper nav {
     min-width: 350px;
+    padding-top: 10px;
 }
 
 .Header-wrapper ul {
