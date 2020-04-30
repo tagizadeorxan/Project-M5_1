@@ -8,7 +8,9 @@ class Stock extends Component {
     state={
         data:[],
         pageSize: 4,
-        currentPage: 1
+        currentPage: 1,
+        lastPage:'',
+        pageNumChange:true
     }
     componentDidMount(){
         this.getData()
@@ -17,14 +19,15 @@ class Stock extends Component {
     getData = () => {
           fetch("https://financialmodelingprep.com/api/v3/company/stock/list")
             .then(res => res.json())
-            .then(data => this.setState({ data: data.symbolsList}));
+            .then(data => this.setState({ data: data.symbolsList,
+                                        lastPage: +Math.ceil(data.symbolsList.length / this.state.pageSize)}));
     }
 
     increasePage = () => {
-        const lastPage = Math.ceil(this.state.data.length / this.state.pageSize);
-        
-    if (this.state.currentPage !== lastPage) {
-        this.setState({ currentPage: this.state.currentPage + 1 });
+        if (this.state.currentPage !== this.state.lastPage) {
+            this.setState({ 
+                currentPage: this.state.currentPage + 1,
+            });
         }
     }
 
@@ -34,8 +37,15 @@ class Stock extends Component {
         }
     }
 
+    pageHandler=(e)=>{
+        this.setState({
+            currentPage: e.target.innerText,
+        })
+    }
+
     render() {
-        const { data, pageSize, currentPage } = this.state;
+        const { data, pageSize, currentPage,lastPage } = this.state;
+        console.log(this.state.lastPage)
         return (
             <div className='stock'>
                 <div className='stock-input'>
@@ -47,7 +57,7 @@ class Stock extends Component {
                 </svg>
                 <input  type='text' placeholder='enter company ticker'></input>
                 </div>
-                <div>
+                <div className='stock-arr'>
                     {data
                     .slice(pageSize * (currentPage - 1), pageSize * currentPage)
                     .map((res,i) => {
@@ -55,8 +65,16 @@ class Stock extends Component {
                         })
                     }
                 </div>
-                <button onClick={this.decreasePage}>Prev</button>
-                <button onClick={this.increasePage}>Next</button>
+                <div className='btn-group'>
+                    <button type='button' onClick={this.decreasePage}><i class="fa fa-angle-left"></i></button>
+                    <button className = 'purple' type='button' onClick={this.pageHandler} >{+currentPage}</button>
+                    <button type='button' onClick={this.pageHandler} >{+currentPage+1}</button>
+                    <button type='button' onClick={this.pageHandler} >{+currentPage+2}</button>
+                    <button type='button' onClick={this.pageHandler} >{+currentPage+3}</button>
+                    <button type='button' >...</button>
+                    <button type='button' >{lastPage}</button>
+                    <button type='button' onClick={this.increasePage}><i class="fa fa-angle-right"></i></button>
+                </div>
            </div>
         )
     }

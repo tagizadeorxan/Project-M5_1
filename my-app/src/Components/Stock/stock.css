@@ -28,3 +28,24 @@
     line-height: 24px;
     margin-left: 11px;
 }
+.btn-group{
+    margin-left:50%;
+    transform:translateX(-10%) ;
+}
+.btn-group button{
+    border: none;
+    background-color:#ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.btn-group button{
+    border: none;
+    background-color:#ffffff;
+}
+
+.purple{
+    color: purple;
+    font-weight: bold;
+}
