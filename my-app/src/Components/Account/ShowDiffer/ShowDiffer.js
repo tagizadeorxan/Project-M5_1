@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './ShowDiffer.css';
 
 class ShowDiffer extends Component {
     render() {
@@ -7,10 +8,10 @@ class ShowDiffer extends Component {
             <div>
                 {
                     first > 0 ?
-                    <span>&#9650; +{first}$ (+{second}%)</span>
+                    <span className="ShowDiffer-color-green">&#9650; +{first}$ (+{second}%)</span>
                     :
                     first < 0 ?
-                    <span>&#9660; {first}$ ({second}%)</span>
+                    <span className="ShowDiffer-color-red">&#9660; {first}$ ({second}%)</span>
                     :
                     <span>&#9670; {0}$ ({0}%)</span>
                 }
