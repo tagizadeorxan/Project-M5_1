@@ -1,0 +1,13 @@
+.Account-header {
+    height: 120px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.Account-header-center {
+    display: flex;
+    justify-content: center;
+}
+
+.Account-content {
+    min-width: 760px;
+}
