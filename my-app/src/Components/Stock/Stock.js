@@ -74,7 +74,7 @@ class Stock extends Component {
                 </div>
                 <div className='stock-arr'>
                     {
-                        (searchInput.length>0?filteredData:data)
+                        (searchInput.length > 0 ? filteredData : data)
                         .slice(pageSize * (currentPage - 1), pageSize * currentPage)
                         .map((res, i) => {
                             return <EachStock key={i} data={res}/>

@@ -12,9 +12,8 @@ class EachStock extends Component {
 
         let { data } = this.props;
         let splitstring = String(data.price).split('.')
-        console.log(data);
+        // console.log(data);
         return (
-
             <Link className="link" to={`/stock/${data.symbol}`}>
 
                 <div className="eachStock-row">
@@ -22,11 +21,8 @@ class EachStock extends Component {
                     <div className="eachStock-row-name"><div>{data.name}</div></div>
                     <div className="eachStock-row-price">{splitstring[0]}.</div>
                     <div className="eachStock-row-price-decimal">{splitstring[1]} $</div>
-
-
-                </div></Link>
-
-
+                </div>
+            </Link>
         )
     }
 }

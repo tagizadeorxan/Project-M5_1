@@ -31,6 +31,13 @@
     width: 90%;
 }
 
+.stock-input img {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    margin-top: 1%;
+}
+
 .btn-group{
     width: 360px;
     margin-left: 40%;

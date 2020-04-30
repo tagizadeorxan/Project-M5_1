@@ -1,15 +1,38 @@
 .Account-header {
-    height: 120px;
+    height: 150px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
+    padding-top: 20px;
 }
 
 .Account-header-center {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    height: 30px;
 }
 
 .Account-content {
     min-width: 760px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.Account-balance-integer-part {
+    font-size: 45px;
+}
+
+.Account-balance-decimal-part {
+    font-size: 30px;
+    font-style: Roboto;
+}
+
+.Account-list {
+    width: 100%;
+    margin-top: 33px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.is-active li {
+    font-weight: 900 !important;
+    border-bottom: 3px solid #833ae0 !important;
 }
