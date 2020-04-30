@@ -18,7 +18,7 @@ class Application extends Component {
             <Route exact path='/account'><Account/></Route>
             <Route exact path='/stock'><Stock/></Route>
             
-           <Route exact path='/stock/:id' component={Buy}></Route> */}
+           <Route exact path='/stock/:id' component={Buy}></Route> 
 
             <Balance/>
 
