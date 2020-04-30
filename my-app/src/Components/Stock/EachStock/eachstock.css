@@ -2,17 +2,20 @@
     display: flex;
     flex-direction: row;
     align-items : baseline;
-    width: 759px;
-    margin-left: 40%;
+    width: 800px;
+    margin-left: 30%;
+    height: 86px;
+    border-bottom: 1px dotted grey;
 }
 
 .eachStock-row:hover {
     display: flex;
     flex-direction: row;
     align-items : baseline;
-    width: 759px;
-    margin-left: 40%;
-    background-color: rgba(130, 58, 224, 0.005);
+    width: 800px;
+    margin-left: 30%;
+    height: 86px;
+    background-color: rgba(130, 58, 224, 0.05);
     cursor: pointer;
 }
 
@@ -22,6 +25,7 @@
     font-size: 12px;
     align-self: center;
     margin-top:20px;
+    margin-left: 10px;
     
 }
 
@@ -40,5 +44,6 @@
 .eachStock-row-price-decimal {
     color:black;
     font-size: 35px;
+    margin-right: 10px;
 }
 
