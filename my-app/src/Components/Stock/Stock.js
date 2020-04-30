@@ -72,7 +72,7 @@ class Stock extends Component {
                     <button type='button' onClick={this.pageHandler} >{+currentPage+2}</button>
                     <button type='button' onClick={this.pageHandler} >{+currentPage+3}</button>
                     <button type='button' >...</button>
-                    <button type='button' >{lastPage}</button>
+                    <button type='button'onClick={this.pageHandler} >{lastPage}</button>
                     <button type='button' onClick={this.increasePage}><i class="fa fa-angle-right"></i></button>
                 </div>
            </div>
