@@ -16,3 +16,11 @@
 .Balance-footer div:last-child {
     margin: auto auto;
 }
+
+
+.Balance {
+    position: fixed;
+    margin-bottom: 0px;
+    bottom: 0;
+    width: 100%;
+}
