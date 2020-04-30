@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Buy';
+import './Buy.css';
 
 class Buy extends Component {
 
@@ -63,18 +63,24 @@ getData = () => {
 
     render() {
         let {data} = this.state;
-   
+        let splitstring = String(data.profile.price).split('.');
+        let splitstring2 = String(this.state.price).split('.');
+        console.log(this.state.price)
         return (
             <div>
+            <div className="buy-header">
                 <button onClick={()=>this.props.history.goBack()}>Back</button>
                <p>{data.profile.companyName}</p>
-               <p>{data.profile.price}</p>
-                <div>
+            </div>
+
+              <div className="buy-defaut-price"><p>{splitstring[0]}.</p><span>{splitstring[1]}$</span></div> 
+                <div className="buy-quantity">
                     <button onClick={this.handleMinus}>-</button>
                     <span>{this.state.value}</span>
                     <button onClick={this.handlePlus}>+</button>
                 </div>
-                <button onClick={this.handleBuy}>Buy</button>
+                <div className="buy-price"><div>Buy for</div><div> {splitstring2[0]}.</div><div>{splitstring2[1]}$</div></div>
+               <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
                 <button onClick={this.delete}>delete</button>
             </div>
            
