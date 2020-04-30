@@ -1,0 +1,44 @@
+.eachStock-row {
+    display: flex;
+    flex-direction: row;
+    align-items : baseline;
+    width: 759px;
+    margin-left: 40%;
+}
+
+.eachStock-row:hover {
+    display: flex;
+    flex-direction: row;
+    align-items : baseline;
+    width: 759px;
+    margin-left: 40%;
+    background-color: rgba(130, 58, 224, 0.005);
+    cursor: pointer;
+}
+
+
+.eachStock-row-symbol{
+    color:rgba(8, 8, 8, 0.500);
+    font-size: 12px;
+    align-self: center;
+    margin-top:20px;
+    
+}
+
+.eachStock-row-name{
+  color:black;
+  font-size: 50px;
+  margin-left: 30px;
+}
+
+.eachStock-row-price {
+    color:black;
+    font-size:65px;
+    margin-left: 100px;
+}
+
+.eachStock-row-price-decimal {
+    color:black;
+    font-size: 35px;
+}
+
