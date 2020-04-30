@@ -19,7 +19,7 @@ class Application extends Component {
             
             {/* <Route exact path='/stock/:id' component={Buy}></Route> */}
 
-            <p>balance: 100000</p>
+            <p>balance: 1000</p>
 
             </Router>
         )
