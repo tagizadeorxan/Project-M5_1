@@ -29,7 +29,9 @@
     margin-left: 11px;
 }
 .btn-group{
-    margin-left:50%;
+    width: 360px;
+    margin-left: 40%;
+    text-align: center;
     transform:translateX(-10%) ;
 }
 .btn-group button{

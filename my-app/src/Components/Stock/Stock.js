@@ -37,11 +37,11 @@ class Stock extends Component {
         }
     }
 
-    pageHandler=(e)=>{
-        this.setState({
-            currentPage: e.target.innerText,
-        })
-    }
+    // pageHandler=(e)=>{
+    //     this.setState({
+    //         currentPage: +(e.target.innerText),
+    //     })
+    // }
 
     render() {
         const { data, pageSize, currentPage,lastPage } = this.state;
@@ -49,12 +49,7 @@ class Stock extends Component {
         return (
             <div className='stock'>
                 <div className='stock-input'>
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Group 68">
-                <circle id="Ellipse 2" cx="9.375" cy="9.375" r="8.375" stroke="black" stroke-width="2"/>
-                <line id="Line 8" x1="15.7071" y1="15.5429" x2="20.7071" y2="20.5429" stroke="black" stroke-width="2"/>
-                </g>
-                </svg>
+                <img src={'/assets/search-logo.png'}/>
                 <input  type='text' placeholder='enter company ticker'></input>
                 </div>
                 <div className='stock-arr'>
