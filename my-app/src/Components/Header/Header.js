@@ -8,8 +8,8 @@ class Header extends Component {
             <div className="Header-wrapper">
                 <nav>
                     <ul className="Header-links-wrapper">
-                        <li><NavLink to='/account'>Account</NavLink></li>
-                        <li><NavLink to ='/stock'>Stock</NavLink></li>
+                        <li><NavLink to='/account' style={{ textDecoration: 'none', color: '#000000',  padding: '10px 30px' }}>Account</NavLink></li>
+                        <li><NavLink to ='/stock' style={{ textDecoration: 'none', color: '#000000', padding: '10px 30px' }}>Stock</NavLink></li>
                     </ul>
                 </nav>
                 <div className="Header-image-wrapper">

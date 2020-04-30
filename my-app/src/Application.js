@@ -12,11 +12,7 @@ class Application extends Component {
         return (
             <Router>
 
-            <Header />
-            {/* <NavLink to='/account'>Account</NavLink>
-            <NavLink to ='/stock'>Stock</NavLink> */}
-
-    
+            <Header />    
 
             <Route exact path='/account'><Account/></Route>
             <Route exact path='/stock'><Stock/></Route>
