@@ -14,12 +14,8 @@ class EachStock extends Component {
         let splitstring = String(data.price).split('.')
         // console.log(data);
         return (
-<<<<<<< HEAD
 
             <Link className="linked" to={`/stock/${data.symbol}`}>
-=======
-            <Link className="link" to={`/stock/${data.symbol}`}>
->>>>>>> e949fe83eac016c56fca41efd78900ea7c1e8571
 
                 <div className="eachStock-row">
                     <div className="eachStock-row-symbol"> <div >{data.symbol}</div></div>
