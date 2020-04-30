@@ -16,6 +16,7 @@
     margin: 0 auto;
     margin-top:33px;
     box-sizing: border-box;
+    display: flex;
 }
 .stock-input input{
     font-family: 'Roboto', sans-serif;
@@ -26,7 +27,9 @@
     font-size: 25px;
     line-height: 24px;
     margin-left: 11px;
+    width: 90%;
 }
+
 .btn-group{
     width: 360px;
     margin-left: 40%;
