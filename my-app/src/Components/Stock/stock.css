@@ -1,3 +1,30 @@
-.stock-sidebar {
-    background-color: black;
+.stock{
+    position: absolute;
+    position: relative;
+    top:124px;
+    width: 100%;
+    background: white;
+    
+}
+.stock-input{
+    width: 360px;
+    height: 60px;
+    border-radius: 94px;
+    padding: 15px 20px;
+    font-style: normal;
+    font-weight: normal;
+    background-color: #F3F3F3;
+    margin: 0 auto;
+    margin-top:33px;
+    box-sizing: border-box;
+}
+.stock-input input{
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    background-color: #F3F3F3;
+    font-size: 25px;
+    line-height: 24px;
+    font-size: 25px;
+    line-height: 24px;
+    margin-left: 11px;
 }
