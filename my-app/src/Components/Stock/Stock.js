@@ -98,7 +98,7 @@ class Stock extends Component {
                         changeCurrentPage={this.changeCurrentPage}
                         theme="bottom-border"
                     />
-                    {/* <h2>current Page:{this.state.currentPage}</h2> */}
+                   
                 </div>
 
 
