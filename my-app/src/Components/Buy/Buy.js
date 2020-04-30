@@ -11,36 +11,42 @@ constructor(props){
 }
 
 handleMinus = () => {
-   let result = this.state.value>1? this.setState({value:this.state.value-1}): null;
+    let {data} = this.state;
+   let result = this.state.value>1 ? this.setState({value:this.state.value-1}): null;
+   let price = this.state.value*data.profile.price;
+   this.setState({price});
 }
 
 handlePlus = () =>{
+    let {data} = this.state;
     this.setState({value:this.state.value+1});
+    let price = this.state.value*data.profile.price;
+    this.setState({price});
 }
 
 handleBuy = () => {
-
     let {data} = this.state;
-
     let price = this.state.value*data.profile.price;
-    this.setState({price});
+    this.setState({price},()=>{this.writeServer()});
+}
 
-
+writeServer = () => {
+    let {data} = this.state;
 
     let options = {
         method:'POST',
         headers: {'Content-type': 'application/json'},
-        
         body: JSON.stringify({
             amount: data.profile.price,
             code: data.symbol,
             purchasePrice: this.state.price,
         })
-       
     }
- 
     fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks",options).then(res=>res.json()).then(res=>console.log(res));
-}
+   }
+
+
+
 
 delete = () =>{
 
@@ -63,15 +69,20 @@ getData = () => {
 
     render() {
         let {data} = this.state;
-        let splitstring = String(data.profile.price).split('.');
-        let splitstring2 = String(this.state.price).split('.');
+        let numberOne = Number(data.profile.price).toFixed(2);
+        let numberTwo = Number(this.state.price).toFixed(2);
+        let splitstring = String(numberOne).split('.');
+        let splitstring2 = String(numberTwo).split('.');
         console.log(this.state.price)
         return (
-            <div>
-            <div className="buy-header">
-                <button onClick={()=>this.props.history.goBack()}>Back</button>
-               <p>{data.profile.companyName}</p>
-            </div>
+            <div className="main">
+
+<div class = "container">
+        <div><i class="glyphicon glyphicon-menu-left"></i><button onClick={()=>this.props.history.goBack()}>Back</button></div>
+        <div><p>{data.profile.companyName}</p></div>
+    </div>
+          
+
 
               <div className="buy-defaut-price"><p>{splitstring[0]}.</p><span>{splitstring[1]}$</span></div> 
                 <div className="buy-quantity">
@@ -79,7 +90,11 @@ getData = () => {
                     <span>{this.state.value}</span>
                     <button onClick={this.handlePlus}>+</button>
                 </div>
-                <div className="buy-price"><div>Buy for</div><div> {splitstring2[0]}.</div><div>{splitstring2[1]}$</div></div>
+                <div className="buy-price">
+                <span>Buy for </span>
+                <span> {splitstring2[0]}.</span>
+                <span>{splitstring2[1]}$</span>
+                </div>
                <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
                 <button onClick={this.delete}>delete</button>
             </div>

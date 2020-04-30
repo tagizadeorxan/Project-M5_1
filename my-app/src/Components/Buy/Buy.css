@@ -1,19 +1,66 @@
-.buy-header{
-    display: flex;
-    justify-content: center;
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
+
+
+.container {
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 60px;
 }
-.buy-header p {
-    color:#2FC20A;
-font-size: 48px;
+
+.container > div:first-child,
+.container > div:nth-child(2) {
+    padding: 10px 20px;
+   
+    color: #fff;
+    text-transform: uppercase;
+    font: 15px/1 Sans-Serif;
 }
-.buy-header button {
-    float: left;
-    font-size:16px;
+
+.container > div:first-child {
+    position: absolute;
+    left: 1%;
+    width: 130px;
     outline: none;
-    border:none;
-    background-color: white;
+    font-size: 18px;
+    color:#833AE0;
 }
+
+
+.container > div:first-child button {
+    color:#833AE0;
+    background-color: white;
+    border:none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+ 
+}
+
+
+.container > div:nth-child(2) {
+    display: inline-block;
+    font-size: 48px;
+    color:#2FC20A;
+    margin: 0 100px;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
 
 .buy-defaut-price {
     display: flex;
@@ -48,16 +95,46 @@ font-size:16px;
 
 .buy-price {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: baseline;
+    margin-top:20px;
+}
+
+.buy-price span:nth-child(1) {
+     margin-right: 5px;
+}
+
+div.buy-price span:nth-child(2){
+    font-size:25px;
+   
+    }
+
+.buy-button {
+    display: flex;
+    justify-content: center;  
+    margin-top: 15px;
     
 }
 
-.buy-price:nth-child(1){
-    font-size:55px;
-    color:pink;
-    }
+.buy-button button {
+    border: 1px solid #833AE0;
+    background-color: white;
+    color:#833AE0;
+    width: 150px;
+    height: 50px;
+    border-radius:28px;
+    cursor: pointer;
+    margin-top: 15px;
+}
 
-.buy-button{
-    display: flex;
-    justify-content: center;  
+.buy-button button:hover {
+    border: 1px solid #833AE0;
+    background-color: #833AE0;
+    color:white;
+    width: 150px;
+    height: 50px;
+    border-radius:28px;
+    cursor: pointer;
+    margin-top: 15px;
 }
