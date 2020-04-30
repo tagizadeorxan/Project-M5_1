@@ -4,6 +4,7 @@ import Account from './Components/Account/Account';
 import Stock from './Components/Stock/Stock';
 import Balance from './Components/Balance/Balance';
 import './index';
+import Buy from './Components/Buy/Buy';
 
 class Application extends Component {
     render() {
@@ -17,7 +18,7 @@ class Application extends Component {
             <Route exact path='/account'><Account/></Route>
             <Route exact path='/stock'><Stock/></Route>
             
-            {/* <Route exact path='/stock/:id' component={Buy}></Route> */}
+           <Route exact path='/stock/:id' component={Buy}></Route> */}
 
             <Balance/>
 

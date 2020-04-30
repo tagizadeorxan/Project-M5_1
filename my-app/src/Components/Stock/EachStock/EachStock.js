@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './eachstock.css';
-
+import {Link} from 'react-router-dom';
 
 
 
 class EachStock extends Component {
 
+    state = {id:0};
 
     render() {
+      
         let {data} = this.props; 
         let splitstring = String(data.price).split('.')
 
@@ -17,6 +19,8 @@ class EachStock extends Component {
                 <div className="eachStock-row-name"><div>{data.name}</div></div>
                 <div className="eachStock-row-price">{splitstring[0]}.</div>
                 <div className="eachStock-row-price-decimal">{splitstring[1]} $</div>
+
+                <Link to={`/stock/${data.symbol}`}>buy</Link>
             </div>
 
 
