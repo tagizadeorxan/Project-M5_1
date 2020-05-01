@@ -20,8 +20,7 @@ class Chart extends Component {
     getData = () => {
         fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.symbol}?from=${this.props.startDate}&to=${this.props.endDate}`)
             .then(res => res.json()).then(res => {
-                edited= res;
-                console.log(edited);
+                edited = res;
             });
            
     }
@@ -41,7 +40,7 @@ class Chart extends Component {
                     height={400}
                     data={[
                         {
-                            "name": "edited.symbol",
+                            "name": edited.symbol,
                             "uv": "edited.number",
                             "pv": 2400,
                             "amt": 2400
