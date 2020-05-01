@@ -34,15 +34,17 @@ class EachAccountData extends Component {
         return (
             (data && actualData) ?
             <div className="EachAccountData" >
-                <div style={{FontSize:"12px !important"}}>{data.code}</div>
-                <div >{this.getFullName()}</div>  
-                <div>{this.getCountOfBoughtStocks()}<span> pcs</span></div>
+                <div className="EachAccountData-Company-Code">{data.code}</div>
+                <div className="EachAccountData-Company-Fullname">{this.getFullName()}</div>  
+                <div className="EachAccountData-stock-quantity">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
                 <div>
-                    <span className="EachAccountData-price">{splitString[0]}</span> 
+                    <span className="EachAccountData-price-integer">{splitString[0]}</span> 
                     .
                     <span className="EachAccountData-price-decimal">{splitString[1]}</span>               
                 </div>
-                <ShowDiffer data={this.getFirstAndSecond()} />
+                <div className="EachAccountData-price-difference">
+                    <ShowDiffer data={this.getFirstAndSecond()} />
+                </div>
             </div>
             : null
         )

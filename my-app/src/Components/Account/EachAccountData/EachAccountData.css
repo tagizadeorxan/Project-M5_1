@@ -1,25 +1,50 @@
 .EachAccountData {
     display: flex;
     justify-content: space-around;
-    
+    align-items: baseline;
+    text-align: center;
+    padding: 15px;
+    width: 759px;
+    margin: 0 auto;
+    border-bottom: 1px dashed #E0E0E0
+}
+
+.EachAccountData:hover {
+    background: rgba(131, 58, 224, 0.05);
+}
+
+.EachAccountData-Company-Code {
+    font-size: 10px;
+    width: 70px;
+    color: rgba(0, 0, 0, 0.5);
+   
+}
+
+.EachAccountData-Company-Fullname {
+    font-size: 24px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    mask-image: linear-gradient(left,#000 85%,rgba(0,0,0,0) 100%);
+    -webkit-mask-image: -webkit-linear-gradient(left,#000 85%,rgba(0,0,0,0) 100%);    
+}
+
+.EachAccountData-stock-quantity {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.EachAccountData-price-integer {
+    font-size: 25px;
+    color: #000000;
 }
 
 .EachAccountData-price-decimal {
     font-size: 17px;
+    color: #000000;
 }
 
-.EachAccountData-price {
-    font-size: 30px;
+.EachAccountData-Company-Code, .EachAccountData-Company-Fullname, .EachAccountData-stock-quantity, .EachAccountData-price-integer, .EachAccountData-price-decimal, .EachAccountData-price-difference  {
+    width: 200px;
 }
-
-/* .EachAccountData  div:first-child, div:nth-child(3){
-    font-size: 12px;
-}
-
-.EachAccountData  div:nth-child(2),div:nth-child(4){
-    font-size: 22px;
-}
-
-.EachAccountData  div:nth-child(5){
-    font-size: 18px;
-} */

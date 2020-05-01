@@ -21,65 +21,7 @@
 
 .Account-content {
     min-width: 760px;
-    /* display: flex;
-    justify-content: center;
-    align-items: baseline; */
-}
-.EachAccountData {
-     display: flex;
-    justify-content: center;
-    align-items: baseline;
-    text-align: center;
-    padding: 15px;
-    width: 759px;
-    margin: 0 auto;
-    border-bottom: 1px dashed #E0E0E0
-   
-}
-.EachAccountData:last-child {
-    border-bottom: none;
-}
-
-.EachAccountData div:nth-child(2){
-    white-space: nowrap;
-    /* width: 50px; */
-    overflow: hidden;
-    text-overflow: clip;
-    /* animation:blinkingText 1.2s infinite; */
-    -webkit-mask-image: -webkit-linear-gradient(left,#000 85%,rgba(0,0,0,0) 100%);
-  
-    
-}
-
-
-/* @keyframes blinkingText{
-    0%{     color: #000;    }
-    49%{    color: red; }
-    60%{    color: yellow; }
-    70%{    color:transparent;  }
-    100%{   color: transparent;    }
-} */
-
-
-
-.EachAccountData:hover {
-    background: rgba(131, 58, 224, 0.05);
-}
-.EachAccountData div:first-child {
-    width: 70px;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.EachAccountData div:nth-child(3) {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.EachAccountData div {
-    width: 200px;
-}
-
-.EachAccountData div:nth-child(2),div:nth-child(4) {
-    color: #000000;
+    padding-top: 50px;
 }
 
 .Account-balance-integer-part {
@@ -92,24 +34,14 @@
     color: #000000;
 }
 
-
-/* .Each-account-data  div:first-child, div:nth-child(3){
-    font-size: 12px;
-}
-
-.Each-account-data  div:nth-child(2),div:nth-child(4){
-    font-size: 22px;
-}
-
-.Each-account-data  div:nth-child(5){
-    font-size: 18px;
-} */
-
 .Account-list {
     width: 100%;
-    margin-top: 33px;
     display: flex;
     justify-content: space-around;
+}   
+
+.Account-list ul a {
+    text-decoration: none !important;
 }
 
 .is-active li {

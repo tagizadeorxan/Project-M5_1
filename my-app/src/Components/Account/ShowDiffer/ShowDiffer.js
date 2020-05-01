@@ -6,11 +6,7 @@ class ShowDiffer extends Component {
         if(!this.props.data) {
             return (null);
         }
-        
-        const {first, second} = this.props.data;
-        
-
-        
+        const {first, second} = this.props.data;        
         return (
             <div className="show-differ">
                 {
