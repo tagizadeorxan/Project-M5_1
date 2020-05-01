@@ -39,6 +39,7 @@ class Buy extends Component {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
         this.setState({ price }, () => { this.writeServer() });
+        this.props.history.goBack();
     }
 
     writeServer = () => {
