@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import './Header.css';
 
 class Header extends Component {
@@ -8,7 +8,7 @@ class Header extends Component {
             <div className="Header-wrapper">
                 <nav>
                     <ul className="Header-links-wrapper">
-                    
+                    <Redirect to='/account'/>
                         <li><NavLink to='/account' style={{ textDecoration: 'none', color: '#000000',  padding: '10px 50px' }}>Account</NavLink></li>
                         <li><NavLink to ='/stock' style={{ textDecoration: 'none', color: '#000000', padding: '10px 50px' }}>Stock</NavLink></li>
                     </ul>
