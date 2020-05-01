@@ -3,9 +3,16 @@ import './ShowDiffer.css';
 
 class ShowDiffer extends Component {
     render() {
+        if(!this.props.data) {
+            return (null);
+        }
+        
         const {first, second} = this.props.data;
+        
+
+        
         return (
-            <div>
+            <div className="show-differ">
                 {
                     (first > 0 && second > 0) ?
                     <span className="ShowDiffer-color-green">&#9650; +{first}$ (+{second}%)</span>

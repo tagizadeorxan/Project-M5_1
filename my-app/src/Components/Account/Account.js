@@ -24,6 +24,7 @@ class Account extends Component {
 
     componentDidMount() {
         this.getAccountData();  
+        setInterval(this.getAccountData, 60000);
     }
 
     getAccountData = async() => {
@@ -52,8 +53,8 @@ class Account extends Component {
             totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
-        this.setState({ globalAccountSum: totalAccountSum });
-        this.getActualData(urlsToFetch);
+        this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
+       
     }
 
     getActualData = async(urlsArray) => {
@@ -91,7 +92,6 @@ class Account extends Component {
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
         const globalDifference = globalAccountSum - globalActualSum;
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
-    
         return (
             <div>
                 <div className="Account-header">
@@ -107,7 +107,7 @@ class Account extends Component {
                     </h2>
                 </div>   
                 <div className="Account-content">
-                    <div>
+                    <div className="each-account-data">
                         {
                             (data.length && actualData.length) ? 
                             data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
