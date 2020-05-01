@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Buy.css';
+import DatePicker from './DatePicker';
 
 class Buy extends Component {
 
@@ -68,7 +69,7 @@ class Buy extends Component {
 
     getData = () => {
         let id = this.props.match.params.id;
-        console.log(this.props);
+        
         fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
 
             let price = data.profile.price;
@@ -83,7 +84,7 @@ class Buy extends Component {
         let numberTwo = Number(this.state.price).toFixed(2);
         let splitstring = String(numberOne).split('.');
         let splitstring2 = String(numberTwo).split('.');
-        console.log(this.state.price)
+        
         return (
             <div className="main">
 
@@ -106,7 +107,7 @@ class Buy extends Component {
                     <span>{splitstring2[1]}$</span>
                 </div>
                 <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
-                    
+                    <DatePicker symbol={this.state.data.symbol}/>
             </div>
 
         )
