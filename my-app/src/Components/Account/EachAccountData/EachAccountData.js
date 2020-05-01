@@ -33,9 +33,9 @@ class EachAccountData extends Component {
         const splitString = String(data.purchasePrice.toFixed(2)).split('.');
         return (
             (data && actualData) ?
-            <div className="EachAccountData">
-                <div>{data.code}</div>
-                <div>{this.getFullName()}</div>  
+            <div className="EachAccountData" >
+                <div style={{FontSize:"12px !important"}}>{data.code}</div>
+                <div >{this.getFullName()}</div>  
                 <div>{this.getCountOfBoughtStocks()}<span> pcs</span></div>
                 <div>
                     <span className="EachAccountData-price">{splitString[0]}</span> 

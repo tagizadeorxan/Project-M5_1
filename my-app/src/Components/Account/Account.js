@@ -107,7 +107,7 @@ class Account extends Component {
                     </h2>
                 </div>   
                 <div className="Account-content">
-                    <div className="Each-account-data">
+                    <div >
                         {
                             (data.length && actualData.length) ? 
                             data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
