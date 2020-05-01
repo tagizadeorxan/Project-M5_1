@@ -15,6 +15,7 @@ class Application extends Component {
             <Header />    
 
             <Route exact path='/'><Account/></Route>
+            <Route exact path='/account'><Account/></Route>
             <Route exact path='/stock'><Stock/></Route>
             
             <Route exact path='/stock/:id' component={Buy}></Route>
