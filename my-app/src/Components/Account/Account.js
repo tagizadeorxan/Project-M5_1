@@ -1,4 +1,4 @@
-import React, {Component, useReducer} from 'react';
+import React, {Component} from 'react';
 import ShowDiffer from './ShowDiffer/ShowDiffer';
 import EachAccountData from './EachAccountData/EachAccountData';
 import Pagination from "react-pagination-library";
@@ -10,10 +10,11 @@ class Account extends Component {
         super(props);
 
         this.state = {
+            globalActualSum: 0,
             globalAccountSum: 0,
             globalSumChange: 0,
             globalPercentChange: 0,
-            data: {},
+            data: [],
             actualData: [],
             pageSize: 4,
             currentPage: 1,
@@ -22,7 +23,7 @@ class Account extends Component {
     }
 
     componentDidMount() {
-        this.getAccountData();
+        this.getAccountData();  
     }
 
     getAccountData = async() => {
@@ -48,7 +49,7 @@ class Account extends Component {
         const {data} = this.state;
         // console.log(data);
         data.forEach(element => {
-            totalAccountSum += Number(element.amount);
+            totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
         this.setState({ globalAccountSum: totalAccountSum });
@@ -56,32 +57,45 @@ class Account extends Component {
     }
 
     getActualData = async(urlsArray) => {
-        try {
-            const actualData = [];
-            const uniqueArray = [...new Set(urlsArray)];
-            uniqueArray.forEach(async(element) => {
-                const response = await fetch(element);
-                actualData.push(await response.json());
-            })
-            // console.log(actualData);
-            this.setState({actualData}, ()=> {
-                const {actualData, data} = this.state;
-                // Updae here diff in h2
-                // ...
-            });
-        }
-        catch(error) {
-            console.log(error);
-        }
+        const uniqueUrls = [...new Set(urlsArray)];
+        Promise.all(uniqueUrls.map(u => fetch(u)))
+        .then(responses => Promise.all(responses.map(res => res.json())))
+        .then(actualData => {
+            if(actualData.length === 0) {
+                throw "Empty response from https://financialmodelingprep.com";
+            }
+            this.setState({actualData}, this.countGlobalPercentChange);
+        })
+        .catch(error => {
+            alert(error);
+        });
+    }
+
+    countGlobalPercentChange = () => {
+        const {data, actualData} = this.state;
+        let globalActualSum = 0;
+        data.forEach(element => {
+            const foundedActual = actualData.find(item => item.symbol === element.code );
+            const countOfBoughtStocks = Math.round(element.purchasePrice / element.amount);
+            globalActualSum += (foundedActual.profile.price) * countOfBoughtStocks;
+        });
+        this.setState({globalActualSum})
     }
 
     changeCurrentPage = numPage => {
         this.setState({ currentPage: numPage });
     }
 
+    getDataEachRow = (mode, attr) => {
+
+    }
+
     render() {
-        const {globalAccountSum, globalSumChange, globalPercentChange, data, currentPage, lastPage, pageSize, actualData} = this.state;
+        const {globalAccountSum, globalSumChange, globalPercentChange, data, currentPage, lastPage, pageSize, actualData, globalActualSum} = this.state;
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
+        const globalDifference = globalAccountSum - globalActualSum;
+        const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
+    
         return (
             <div>
                 <div className="Account-header">
@@ -93,28 +107,30 @@ class Account extends Component {
                         
                     </h1>
                     <h2 className="Account-header-center">
-                        <ShowDiffer data={{first: globalSumChange, second: globalPercentChange}} />
+                        <ShowDiffer data={{first: globalDifference.toFixed(2), second: globalPercentDifference.toFixed(2)}} />
                     </h2>
                 </div>   
                 <div className="Account-content">
                     {
-                        (data.length && actualData.length) && 
+                        (data.length && actualData.length) ? 
                         data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
                             return (
-                                <EachAccountData key={index} getDifFunction={this.getAccData} data={element}/>
+                                <EachAccountData key={index} getMoreData={this.getDataEachRow} data={element}/>
                             )
                         })
+                        : null
                     }
 
                     <div className="Account-list">
                         {
-                            (data.length && actualData.length) && 
+                            (data.length && actualData.length) ? 
                             <Pagination 
                                 currentPage={currentPage}
                                 totalPages={lastPage}
                                 changeCurrentPage={this.changeCurrentPage}
                                 theme="bottom-border"
-                            />
+                            /> 
+                            : null
                         }
                     </div>
                 </div>
