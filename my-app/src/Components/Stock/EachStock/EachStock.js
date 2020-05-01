@@ -11,7 +11,7 @@ class EachStock extends Component {
     render() {
 
         let { data } = this.props;
-        let splitstring = String(data.price).split('.')
+        let splitstring = String(data.price.toFixed(2)).split('.')
         // console.log(data);
         return (
         

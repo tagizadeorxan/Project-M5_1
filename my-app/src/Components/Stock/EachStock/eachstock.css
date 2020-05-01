@@ -4,7 +4,7 @@
     align-items : center;
     width: 759px;
     border-bottom: 1px dashed grey;
-   
+   padding: 20px 0;
     
 }
 
@@ -42,7 +42,7 @@
   font-size: 1.7vw;
   margin-left: 10px;
   align-items: flex-start;
-  width: 650px;
+  width: 550px;
  
 }
 
@@ -56,7 +56,7 @@
 
 .eachStock-row-price {
     color:black;
-    font-size:65px;
+    font-size:40px;
     margin-left: auto;
     width: 120px;
     text-align: end;
@@ -64,10 +64,11 @@
 
 .eachStock-row-price-decimal {
     color:black;
-    font-size: 35px;
+    width: 80px;
+    font-size: 25px;
     margin-right: 15px;
     text-align: start;
-    margin-top: 25px;
+    margin-top: 10px;
     
 }
 

@@ -73,12 +73,13 @@ class Stock extends Component {
                 <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'></input>
                 </div>
                 <div className='stock-arr'>
-                    {
+                    {   (data.length || filteredData.length > 0) ?
                         (searchInput.length > 0 ? filteredData : data)
                         .slice(pageSize * (currentPage - 1), pageSize * currentPage)
                         .map((res, i) => {
                             return <EachStock key={i} data={res}/>
-                        })
+                        }):
+                        <div class='loading'>Loading...</div>
                     }
                 </div>
                 
