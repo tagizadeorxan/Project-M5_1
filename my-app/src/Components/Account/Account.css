@@ -93,17 +93,17 @@
 }
 
 
-/* .each-account-data  div:first-child, div:nth-child(3){
+.Each-account-data  div:first-child, div:nth-child(3){
     font-size: 12px;
 }
 
-.each-account-data  div:nth-child(2),div:nth-child(4){
+.Each-account-data  div:nth-child(2),div:nth-child(4){
     font-size: 22px;
 }
 
-.each-account-data  div:nth-child(5){
+.Each-account-data  div:nth-child(5){
     font-size: 18px;
-} */
+}
 
 .Account-list {
     width: 100%;
