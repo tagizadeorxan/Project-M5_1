@@ -119,7 +119,10 @@ class Account extends Component {
                         }
                     </div>
 
-                    <div className="Account-list">
+                   
+                </div>
+
+                <div className="Account-list">
                         {
                             (data.length && actualData.length) ? 
                             <Pagination 
@@ -131,7 +134,6 @@ class Account extends Component {
                             : null
                         }
                     </div>
-                </div>
             </div>
         )
     }

@@ -32,13 +32,18 @@ class EachAccountData extends Component {
 
     render() {
         const {data, actualData} = this.props;
+        const splitString = String(data.purchasePrice.toFixed(2)).split('.');
         return (
             (data && actualData) ?
             <div className="EachAccountData">
                 <div>{data.code}</div>
                 <div>{this.getFullName()}</div>  
                 <div>{this.getCountOfBoughtStocks()}<span> pcs</span></div>
-                <div>{data.purchasePrice}</div>
+                <div>
+                    <span>{splitString[0]}</span>
+                    .
+                    <span>{splitString[1]}</span>               
+                </div>
                 <ShowDiffer data={this.getFirstAndSecond()} />
             </div>
             : null
