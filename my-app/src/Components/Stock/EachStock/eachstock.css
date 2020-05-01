@@ -10,8 +10,8 @@
     
 }
 
-.linked {
-    text-decoration: none;
+.linked  {
+    text-decoration: none !important;
     display: flex;
     justify-content: center;
 }
