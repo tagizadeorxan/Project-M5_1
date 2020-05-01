@@ -102,7 +102,7 @@ class Account extends Component {
                         </div>
                         
                     </h1>
-                    <h2 className="Account-header-center">
+                    <h2 className="Account-header-center show-dif">
                         <ShowDiffer data={{first: globalDifference.toFixed(2), second: globalPercentDifference.toFixed(2)}} />
                     </h2>
                 </div>   

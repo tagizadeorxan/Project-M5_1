@@ -9,6 +9,14 @@
     justify-content: space-around;
     height: 30px;
     margin-top: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.show-dif {
+    font-size: 18px;
+    margin-top: 43px;
 }
 
 .Account-content {
@@ -18,12 +26,13 @@
 }
 
 .Account-balance-integer-part {
-    font-size: 45px;
+    color: #000000;
+    font-size: 64px;
 }
 
 .Account-balance-decimal-part {
-    font-size: 30px;
-    font-style: Roboto;
+    font-size: 36px;
+    color: #000000;
 }
 
 .Account-list {
