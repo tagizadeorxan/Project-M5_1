@@ -38,9 +38,9 @@ class EachAccountData extends Component {
                 <div>{this.getFullName()}</div>  
                 <div>{this.getCountOfBoughtStocks()}<span> pcs</span></div>
                 <div>
-                    <span>{splitString[0]}</span>
+                    <span className="EachAccountData-price">{splitString[0]}</span> 
                     .
-                    <span>{splitString[1]}</span>               
+                    <span className="EachAccountData-price-decimal">{splitString[1]}</span>               
                 </div>
                 <ShowDiffer data={this.getFirstAndSecond()} />
             </div>

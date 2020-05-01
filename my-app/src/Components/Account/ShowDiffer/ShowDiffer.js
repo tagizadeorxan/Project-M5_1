@@ -12,7 +12,7 @@ class ShowDiffer extends Component {
 
         
         return (
-            <div>
+            <div className="show-differ">
                 {
                     (first > 0 && second > 0) ?
                     <span className="ShowDiffer-color-green">&#9650; +{first}$ (+{second}%)</span>

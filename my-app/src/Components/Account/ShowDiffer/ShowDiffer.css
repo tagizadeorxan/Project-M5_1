@@ -5,3 +5,7 @@
 .ShowDiffer-color-green {
     color: #2FC20A;;
 }
+
+.show-differ span {
+    font-size: 20px;
+}

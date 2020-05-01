@@ -3,3 +3,11 @@
     justify-content: space-around;
     
 }
+
+.EachAccountData-price-decimal {
+    font-size: 17px;
+}
+
+.EachAccountData-price {
+    font-size: 30px;
+}
