@@ -24,6 +24,7 @@ class Account extends Component {
 
     componentDidMount() {
         this.getAccountData();  
+        setInterval(this.getAccountData, 60000);
     }
 
     getAccountData = async() => {
@@ -91,7 +92,6 @@ class Account extends Component {
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
         const globalDifference = globalAccountSum - globalActualSum;
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
-        // console.log(globalDifference, globalPercentDifference);
         return (
             <div>
                 <div className="Account-header">
