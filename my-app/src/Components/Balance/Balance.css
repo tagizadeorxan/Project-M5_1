@@ -4,6 +4,7 @@
     height: 70px;
     display: flex;
     font-weight: bolder;
+    position: relative;
 }
 
 .Balance-footer div:first-child {
@@ -15,21 +16,16 @@
     line-height: 70px;
 }
 
-.Balance-footer div:last-child {
-    /* margin: 0 auto; */
-    /* margin-left: 35%; */
-    text-align: center;
-    vertical-align: middle;
-    line-height: 70px;
-}
-
 .balance-box {
-    width: 90%;
+    width: 15%;
     margin: 0px;
 }
 
 .box2 {
-    margin: 0 auto;
+    position:absolute;
+    width: 10%;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 
