@@ -19,11 +19,9 @@ class EachAccountData extends Component {
     getFirstAndSecond = () => {
         const {actualData, data} = this.props;
         const foundedActual = actualData.find(item => item.symbol === data.code );
-        const difference = data.purchasePrice - foundedActual.profile.price;
-        const globalPercentDifference = ((difference * 100)/data.purchasePrice);
-        if(!difference || !globalPercentDifference) {
-            return;
-        }
+        const difference = data.amount - foundedActual.profile.price;       
+        console.log(data.amount, foundedActual.profile.price); 
+        const globalPercentDifference = ((difference * 100)/data.amount);
         return {
             first:  difference.toFixed(2),
             second: globalPercentDifference.toFixed(2)
