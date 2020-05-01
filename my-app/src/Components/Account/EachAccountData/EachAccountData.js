@@ -7,7 +7,7 @@ class EachAccountData extends Component {
     getFullName = () => {
         const {actualData, data} = this.props;
         const foundedActual = actualData.find(item => item.symbol === data.code );
-        return foundedActual.companyName
+        return foundedActual.profile.companyName
     }
 
     getCountOfBoughtStocks = () => {
