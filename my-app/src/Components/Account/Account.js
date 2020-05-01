@@ -86,12 +86,8 @@ class Account extends Component {
         this.setState({ currentPage: numPage });
     }
 
-    getDataEachRow = (mode, attr) => {
-
-    }
-
     render() {
-        const {globalAccountSum, globalSumChange, globalPercentChange, data, currentPage, lastPage, pageSize, actualData, globalActualSum} = this.state;
+        const {globalAccountSum,actualData, data, currentPage, lastPage, pageSize, globalActualSum} = this.state;
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
         const globalDifference = globalAccountSum - globalActualSum;
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
@@ -111,15 +107,17 @@ class Account extends Component {
                     </h2>
                 </div>   
                 <div className="Account-content">
-                    {
-                        (data.length && actualData.length) ? 
-                        data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
-                            return (
-                                <EachAccountData key={index} getMoreData={this.getDataEachRow} data={element}/>
-                            )
-                        })
-                        : null
-                    }
+                    <div>
+                        {
+                            (data.length && actualData.length) ? 
+                            data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
+                                return (
+                                    <EachAccountData key={index} data={element} actualData={actualData}/>
+                                )
+                            })
+                            : null
+                        }
+                    </div>
 
                     <div className="Account-list">
                         {
