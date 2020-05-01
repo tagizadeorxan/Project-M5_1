@@ -12,17 +12,27 @@ class Buy extends Component {
 
     handleMinus = () => {
         let { data } = this.state;
-        let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 }) : null;
         let price = this.state.value * data.profile.price;
-        this.setState({ price });
+        let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 },()=> this.changePrice()) : null;
+        
     }
 
     handlePlus = () => {
         let { data } = this.state;
-        this.setState({ value: this.state.value + 1 });
-        let price = this.state.value * data.profile.price;
-        this.setState({ price });
+        this.setState({ value: this.state.value + 1},()=> this.changePrice());
+       
+       
+        
     }
+
+
+    changePrice = () =>{
+        let { data } = this.state;
+        let price = this.state.value * data.profile.price;
+        this.setState({price});
+    }
+    
+
 
     handleBuy = () => {
         let { data } = this.state;
@@ -96,7 +106,7 @@ class Buy extends Component {
                     <span>{splitstring2[1]}$</span>
                 </div>
                 <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
-
+                    
             </div>
 
         )
