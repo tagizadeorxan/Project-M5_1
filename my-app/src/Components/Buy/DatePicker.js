@@ -49,7 +49,7 @@ class DatePick extends Component {
         return (
             <>
             <div className="date-picker">
-          <DatePicker  className="picker"
+          <DatePicker id="datapicker1" className="picker"
             selected={this.state.startDate}
             onChange={this.handleChange}
           />
