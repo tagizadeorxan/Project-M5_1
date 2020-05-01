@@ -9,6 +9,10 @@
     justify-content: space-around;
     height: 30px;
     margin-top: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
 }
 
 .Account-content {
