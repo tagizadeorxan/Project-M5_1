@@ -90,7 +90,7 @@ class Account extends Component {
     render() {
         const {globalAccountSum,actualData, data, currentPage, lastPage, pageSize, globalActualSum} = this.state;
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
-        const globalDifference = globalAccountSum - globalActualSum;
+        const globalDifference = globalActualSum - globalAccountSum ;
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
         return (
             <div>
