@@ -45,7 +45,23 @@
     /* width: 50px; */
     overflow: hidden;
     text-overflow: clip;
+    /* animation:blinkingText 1.2s infinite; */
+    -webkit-mask-image: -webkit-linear-gradient(left,#000 85%,rgba(0,0,0,0) 100%);
+  
+    
 }
+
+
+/* @keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: red; }
+    60%{    color: yellow; }
+    70%{    color:transparent;  }
+    100%{   color: transparent;    }
+} */
+
+
+
 .EachAccountData:hover {
     background: rgba(131, 58, 224, 0.05);
 }
