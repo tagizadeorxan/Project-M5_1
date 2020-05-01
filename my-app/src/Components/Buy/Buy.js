@@ -39,7 +39,30 @@ class Buy extends Component {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
         this.setState({ price }, () => { this.writeServer() });
+        alert("you bought successfully, check your account");
         this.props.history.goBack();
+        const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
+        .then(data=>data.json()).then(result =>{
+             price = result.currentBalance - price;
+             this.updateBalance(price);
+        } )
+       
+
+        
+    }
+
+    updateBalance = (price) => {
+        let options = {
+            method: 'PUT',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                currentBalance: price
+            })
+
+        }
+
+        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4",options)
+        .then(data => data.json());
     }
 
     writeServer = () => {
