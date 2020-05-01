@@ -93,7 +93,7 @@
 }
 
 
-.each-account-data  div:first-child, div:nth-child(3){
+/* .each-account-data  div:first-child, div:nth-child(3){
     font-size: 12px;
 }
 
@@ -103,7 +103,7 @@
 
 .each-account-data  div:nth-child(5){
     font-size: 18px;
-}
+} */
 
 .Account-list {
     width: 100%;
