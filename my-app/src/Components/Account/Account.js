@@ -52,8 +52,8 @@ class Account extends Component {
             totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
-        this.setState({ globalAccountSum: totalAccountSum });
-        this.getActualData(urlsToFetch);
+        this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
+       
     }
 
     getActualData = async(urlsArray) => {
@@ -91,7 +91,7 @@ class Account extends Component {
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
         const globalDifference = globalAccountSum - globalActualSum;
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
-    
+        // console.log(globalDifference, globalPercentDifference);
         return (
             <div>
                 <div className="Account-header">

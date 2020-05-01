@@ -3,7 +3,14 @@ import './ShowDiffer.css';
 
 class ShowDiffer extends Component {
     render() {
+        if(!this.props.data) {
+            return (null);
+        }
+        
         const {first, second} = this.props.data;
+        
+
+        
         return (
             <div>
                 {
