@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './EachAccountData.css';
 import ShowDiffer from '../ShowDiffer/ShowDiffer';
+import '../../../animations.css';
 
 class EachAccountData extends Component {
 
@@ -33,15 +34,15 @@ class EachAccountData extends Component {
         return (
             (data && actualData) ?
             <div className="EachAccountData" >
-                <div className="EachAccountData-Company-Code">{data.code}</div>
-                <div className="EachAccountData-Company-Fullname">{this.getFullName()}</div>  
-                <div className="EachAccountData-stock-quantity">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
-                <div>
+                <div className="EachAccountData-Company-Code slideUp">{data.code}</div>
+                <div className="EachAccountData-Company-Fullname slideLeft">{this.getFullName()}</div>  
+                <div className="EachAccountData-stock-quantity slideRight">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
+                <div className="slideRight">
                     <span className="EachAccountData-price-integer">{splitString[0]}</span> 
                     .
                     <span className="EachAccountData-price-decimal">{splitString[1]}</span>               
                 </div>
-                <div className="EachAccountData-price-difference">
+                <div className="EachAccountData-price-difference stretchRight">
                     <ShowDiffer data={this.getFirstAndSecond()} />
                 </div>
             </div>
