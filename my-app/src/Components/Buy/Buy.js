@@ -40,14 +40,18 @@ class Buy extends Component {
     handleBuy = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
-        this.setState({ price }, () => { this.writeServer() });
-        const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
+        this.setState({ price }, () => { if(this.writeServer()){
+            const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
             .then(data => data.json()).then(result => {
                 price = result.currentBalance - price;
                 this.updateBalance(price);
                 alert("you bought successfully, check your account");
                 this.props.history.goBack();
             }).catch(err => alert("something wrong please try again later"))
+        }
+       
+        });
+     
     }
 
 
@@ -66,12 +70,12 @@ class Buy extends Component {
             .then(data => data.json()).catch(err => alert("something wrong please try again later"));
     }
 
-    //writing data to server pruchase history
+    //writing data to server pruchase history and catching error while data is cant be buy
 
 
     writeServer = () => {
         let { data } = this.state;
-
+        let result = false;
         let options = {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
@@ -81,7 +85,8 @@ class Buy extends Component {
                 purchasePrice: this.state.price,
             })
         }
-        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => res.json()).then(res => console.log(res)).catch(err => alert("something wrong please try again later"));
+        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => res.ok ? result=true:alert("something wrong please try again later")).catch((err) => console.log(err));
+        return result;
     }
 
     //getting each stock data in the page to buy
