@@ -8,7 +8,7 @@ class Buy extends Component {
 
     constructor(props) {
         super(props);
-        // this.getData();
+      
     }
 
     componentDidMount() {
@@ -17,7 +17,6 @@ class Buy extends Component {
 
     handleMinus = () => {
         let { data } = this.state;
-        let price = this.state.value * data.profile.price;
         let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 },()=> this.changePrice()) : null;
         
     }
