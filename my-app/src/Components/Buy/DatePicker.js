@@ -12,7 +12,6 @@ class DatePick extends Component {
   };
       
   handleChange = date => {
-    console.log(date);
     this.setState({
       startDate: date,
       status :true
@@ -20,7 +19,6 @@ class DatePick extends Component {
   };
 
   handleEndDate = date => {
-    console.log(date);
     this.setState({endDate:date,status:true});
   }
 
@@ -35,7 +33,6 @@ class DatePick extends Component {
     let startdate = this.formatDate(this.state.startDate);
     let enddate = this.formatDate(this.state.endDate);
     let symbol = this.props.symbol;
-    console.log(startdate, enddate);
     return (
       <>
         <div className="date-picker">

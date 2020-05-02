@@ -49,7 +49,6 @@ class Account extends Component {
         let totalAccountSum = 0;
         const urlsToFetch = [];
         const {data} = this.state;
-        // console.log(data);
         data.forEach(element => {
             totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
