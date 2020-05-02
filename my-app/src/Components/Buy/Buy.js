@@ -35,7 +35,7 @@ class Buy extends Component {
     }
 
 
-    //buy stock with given quantity and sending it to server api
+    //buy stock with given quantity and sending it to server api and cheking if response of buy will true will change balance
 
     handleBuy = () => {
         let { data } = this.state;
