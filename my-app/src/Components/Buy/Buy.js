@@ -40,18 +40,24 @@ class Buy extends Component {
     handleBuy = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
-        this.setState({ price }, () => { if(this.writeServer()){
-            const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
-            .then(data => data.json()).then(result => {
-                price = result.currentBalance - price;
-                this.updateBalance(price);
+        this.setState({ price }, async () => {
+            const response = await this.writeServer();
+
+            if (response) {
                 alert("you bought successfully, check your account");
-                this.props.history.goBack();
-            }).catch(err => alert("something wrong please try again later"))
-        }
-       
+                const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
+                    .then(data => data.json()).then(result => {
+                        price = result.currentBalance - price;
+                        this.updateBalance(price);
+
+                        this.props.history.goBack();
+                    }).catch(err => alert("something wrong please try again later"))
+            } else {
+                console.log("hmm duzdu ishlemir")
+            }
+
         });
-     
+
     }
 
 
@@ -73,7 +79,7 @@ class Buy extends Component {
     //writing data to server pruchase history and catching error while data is cant be buy
 
 
-    writeServer = () => {
+    async writeServer() {
         let { data } = this.state;
         let result = false;
         let options = {
@@ -85,7 +91,10 @@ class Buy extends Component {
                 purchasePrice: this.state.price,
             })
         }
-        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => res.ok ? result=true:alert("something wrong please try again later")).catch((err) => console.log(err));
+
+        const response = await fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => (res.status === 201) ? result = true : alert("something wrong please try again later"))
+            .catch((err) => console.log(err));
+        console.log(result);
         return result;
     }
 
@@ -94,9 +103,9 @@ class Buy extends Component {
     getData = () => {
         let id = this.props.match.params.id;
         fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
-        let price = data.profile.price;
-        this.setState({ data, price })
-        }).catch(err=>alert("something wrong please try again later"));
+            let price = data.profile.price;
+            this.setState({ data, price })
+        }).catch(err => alert("something wrong please try again later"));
     }
 
     render() {
