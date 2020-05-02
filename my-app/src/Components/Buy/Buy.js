@@ -8,51 +8,50 @@ class Buy extends Component {
 
     constructor(props) {
         super(props);
-      
     }
 
     componentDidMount() {
         this.getData();
     }
 
+    //function when - button pressing increse quantity of stock
     handleMinus = () => {
         let { data } = this.state;
-        let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 },()=> this.changePrice()) : null;
-        
+        let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 }, () => this.changePrice()) : null;
     }
+
+    //function when + button pressing increse quantity of stock
 
     handlePlus = () => {
         let { data } = this.state;
-        this.setState({ value: this.state.value + 1},()=> this.changePrice());
-       
-       
-        
+        this.setState({ value: this.state.value + 1 }, () => this.changePrice());
     }
 
 
-    changePrice = () =>{
+    changePrice = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
-        this.setState({price});
+        this.setState({ price });
     }
-    
 
+
+    //buy stock with given quantity and sending it to server api
 
     handleBuy = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
         this.setState({ price }, () => { this.writeServer() });
-        alert("you bought successfully, check your account");
-        this.props.history.goBack();
         const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
-        .then(data=>data.json()).then(result =>{
-             price = result.currentBalance - price;
-             this.updateBalance(price);
-        } )
-       
-
-        
+            .then(data => data.json()).then(result => {
+                price = result.currentBalance - price;
+                this.updateBalance(price);
+                alert("you bought successfully, check your account");
+                this.props.history.goBack();
+            }).catch(err => alert("something wrong please try again later"))
     }
+
+
+    // after success buy action updating balance of user in api
 
     updateBalance = (price) => {
         let options = {
@@ -61,12 +60,14 @@ class Buy extends Component {
             body: JSON.stringify({
                 currentBalance: price
             })
-
         }
 
-        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4",options)
-        .then(data => data.json());
+        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4", options)
+            .then(data => data.json()).catch(err => alert("something wrong please try again later"));
     }
+
+    //writing data to server pruchase history
+
 
     writeServer = () => {
         let { data } = this.state;
@@ -80,29 +81,17 @@ class Buy extends Component {
                 purchasePrice: this.state.price,
             })
         }
-        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => res.json()).then(res => console.log(res));
+        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks", options).then(res => res.json()).then(res => console.log(res)).catch(err => alert("something wrong please try again later"));
     }
 
-
-
-
-    // delete = () =>{
-
-    //     fetch(`https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks/${44}`, {
-    //         method:'DELETE',
-    //     })
-
-    // }
+    //getting each stock data in the page to buy
 
     getData = () => {
         let id = this.props.match.params.id;
-        
         fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
-
-            let price = data.profile.price;
-
-            this.setState({ data, price })
-        });
+        let price = data.profile.price;
+        this.setState({ data, price })
+        }).catch(err=>alert("something wrong please try again later"));
     }
 
     render() {
@@ -111,7 +100,7 @@ class Buy extends Component {
         let numberTwo = Number(this.state.price).toFixed(2);
         let splitstring = String(numberOne).split('.');
         let splitstring2 = String(numberTwo).split('.');
-        
+
         return (
             <div className="main">
 
@@ -119,9 +108,6 @@ class Buy extends Component {
                     <div><i className="glyphicon glyphicon-menu-left"></i><button onClick={() => this.props.history.goBack()}>Back</button></div>
                     <div><p>{data.profile.companyName}</p></div>
                 </div>
-
-
-
                 <div className="buy-defaut-price"><p>{splitstring[0]}.</p><span>{splitstring[1]}$</span></div>
                 <div className="buy-quantity">
                     <button onClick={this.handleMinus}>-</button>
@@ -134,9 +120,8 @@ class Buy extends Component {
                     <span>{splitstring2[1]}$</span>
                 </div>
                 <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
-                <DatePicker symbol={this.state.data.symbol}/>
+                <DatePicker symbol={this.state.data.symbol} />
             </div>
-
         )
     }
 }
