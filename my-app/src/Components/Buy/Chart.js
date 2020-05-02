@@ -1,25 +1,18 @@
 
 import React, { Component } from 'react';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, AreaChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import './Buy';
-
-
-
-
-
-
-// let edited = {};
-
 
 
 class Chart extends Component {
 
+    
     // state = { res: [],startDate: new Date(),endDate: new Date(), symbol:'' };
     state={
         data:[]
     }
 
-    componentDidUpdate(){
+    componentDidMount(){
         this.getData();
     }
     
@@ -33,23 +26,27 @@ class Chart extends Component {
 
 
     render() {
-        console.log(this.props.startDate);
-        console.log(this.props.endDate);
+        // console.log(this.props.startDate);
+        // console.log(this.props.endDate);
+        // console.log(this.props.symbol);
+        // console.log(this.state.data)
         console.log(this.props.symbol);
-        console.log(this.state.data)
-
         return (
              
-            <div className="chart">
-                <LineChart width={600} height={300} data={this.state.data}
-                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                <XAxis dataKey="label"/>
-                <YAxis/>
-                <CartesianGrid strokeDasharray="3 3"/>
-                <Tooltip/>
-                <Legend />
-                <Line type="monotone" dataKey="vwap" stroke="#8884d8" activeDot={{r: 8}}/>
-                </LineChart></div>
+            
+                <div className="chart">                
+                    {/* { */}
+                        {/* this.state.data !== undefined ? */}
+                        <AreaChart width={600} height={300} data={this.state.data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                        <XAxis dataKey="label" />
+                        <YAxis />
+                        <Tooltip />
+                        <Area type="monotone" dataKey="vwap" stroke="#833ae0" fill="#B073FF" />
+                        </AreaChart>
+                        {/* : null */}
+                    {/* } */}
+                </div>
         )
     }
 }

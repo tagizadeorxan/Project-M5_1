@@ -131,7 +131,7 @@ class Buy extends Component {
                     <span>{splitstring2[1]}$</span>
                 </div>
                 <div className="buy-button" > <button onClick={this.handleBuy}>Buy</button></div>
-                    <DatePicker symbol={this.state.data.symbol}/>
+                <DatePicker symbol={this.state.data.symbol}/>
             </div>
 
         )
