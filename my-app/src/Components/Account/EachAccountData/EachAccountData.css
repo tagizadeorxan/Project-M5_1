@@ -4,7 +4,7 @@
     align-items: baseline;
     text-align: center;
     padding: 15px;
-    width: 759px;
+    width: 760px;
     margin: 0 auto;
     border-bottom: 1px dashed #E0E0E0
 }
@@ -35,16 +35,33 @@
     font-size: 12px;
 }
 
+/* .EachAccountData-price-variable {
+    margin: 0 auto;
+    width: 100px;
+    
+} */
+
 .EachAccountData-price-integer {
     font-size: 25px;
     color: #000000;
+    text-align: center;
+    /* vertical-align: middle; */
 }
 
 .EachAccountData-price-decimal {
     font-size: 17px;
     color: #000000;
+    text-align: center;
+    /* vertical-align: middle; */
 }
 
-.EachAccountData-Company-Code, .EachAccountData-Company-Fullname, .EachAccountData-stock-quantity, .EachAccountData-price-integer, .EachAccountData-price-decimal, .EachAccountData-price-difference  {
-    width: 200px;
+.EachAccountData-Company-Code, .EachAccountData-Company-Fullname, .EachAccountData-stock-quantity, .EachAccountData-price-difference, .EachAccountData-price-variable  {
+    /* width: 200px; */
+    width: 150px;
+    text-align: center;
+    vertical-align: middle;
+    /* margin: 0 auto; */   
+    /* left: 50%; */
+    /* display: flex;
+    justify-content: space-evenly; */
 }

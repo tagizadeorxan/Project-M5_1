@@ -37,10 +37,12 @@ class EachAccountData extends Component {
                 <div className="EachAccountData-Company-Code slideUp">{data.code}</div>
                 <div className="EachAccountData-Company-Fullname slideLeft">{this.getFullName()}</div>  
                 <div className="EachAccountData-stock-quantity slideRight">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
-                <div className="slideRight">
-                    <span className="EachAccountData-price-integer">{splitString[0]}</span> 
-                    .
-                    <span className="EachAccountData-price-decimal">{splitString[1]}</span>               
+                <div className="EachAccountData-price-variable slideRight">
+                    <div>
+                        <span className="EachAccountData-price-integer">{splitString[0]}</span> 
+                        .
+                        <span className="EachAccountData-price-decimal">{splitString[1]}</span>         
+                    </div>      
                 </div>
                 <div className="EachAccountData-price-difference stretchRight">
                     <ShowDiffer data={this.getFirstAndSecond()} />
