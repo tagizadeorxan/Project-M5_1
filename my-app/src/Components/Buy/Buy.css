@@ -153,7 +153,7 @@ div.buy-price span:nth-child(2){
     justify-content: center;
     margin-top: 15px;
    font-size: 40px;
-
+   outline:0;
 }
 
 
@@ -166,6 +166,7 @@ div.buy-price span:nth-child(2){
     border-radius:28px;
     margin-top: 15px;
     font-size:10px;
+    outline:0;
 }
 
 .chart {
