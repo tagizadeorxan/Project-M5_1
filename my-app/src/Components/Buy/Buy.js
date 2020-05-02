@@ -49,13 +49,9 @@ class Buy extends Component {
                     .then(data => data.json()).then(result => {
                         price = result.currentBalance - price;
                         this.updateBalance(price);
-
                         this.props.history.goBack();
                     }).catch(err => alert("something wrong please try again later"))
-            } else {
-                console.log("hmm duzdu ishlemir")
-            }
-
+            } 
         });
 
     }
