@@ -10,6 +10,7 @@ class DatePick extends Component {
         endDate : new Date(),
         status: true,
       };
+      
      
       handleChange = date => {
           console.log(date);
@@ -50,13 +51,14 @@ class DatePick extends Component {
             <>
             <div className="date-picker">
           <DatePicker id="datapicker1" className="picker"
+            maxDate={this.state.startDate}
             selected={this.state.startDate}
             onChange={this.handleChange}
           />
  
           <DatePicker className="picker"
             minDate={this.state.startDate}
-            
+            maxDate={this.state.endDate}
             selected={this.state.endDate}
             onChange={this.handleEndDate}
           />
