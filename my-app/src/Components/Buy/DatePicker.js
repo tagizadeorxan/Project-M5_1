@@ -24,7 +24,6 @@ class DatePick extends Component {
     this.setState({endDate:date,status:true});
   }
 
-
   formatDate = (d) => {
     let month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
     if (month.length < 2) month = '0' + month;

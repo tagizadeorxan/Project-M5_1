@@ -79,7 +79,7 @@ class Stock extends Component {
                         .map((res, i) => {
                             return <EachStock key={i} data={res}/>
                         }):
-                        <div class='loading'>Loading...</div>
+                        <div className='loading'>Loading...</div>
                     }
                 </div>
                 

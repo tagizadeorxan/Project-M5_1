@@ -20,7 +20,6 @@ class EachAccountData extends Component {
         const {actualData, data} = this.props;
         const foundedActual = actualData.find(item => item.symbol === data.code );
         const difference = foundedActual.profile.price -data.amount;       
-        console.log(data.amount, foundedActual.profile.price); 
         const globalPercentDifference = ((difference * 100)/data.amount);
         return {
             first:  difference.toFixed(2),
