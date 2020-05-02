@@ -132,6 +132,7 @@ div.buy-price span:nth-child(2){
     border-radius:28px;
     cursor: pointer;
     margin-top: 15px;
+    outline:0;
 }
 
 .buy-button button:hover {
