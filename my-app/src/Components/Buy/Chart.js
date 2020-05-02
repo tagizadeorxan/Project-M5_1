@@ -15,6 +15,10 @@ class Chart extends Component {
     componentDidMount(){
         this.getData();
     }
+
+    componentWillReceiveProps(){
+        this.getData();
+    }
     
  
     getData = () => {
