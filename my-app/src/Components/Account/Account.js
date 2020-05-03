@@ -1,51 +1,59 @@
-import React, {Component} from 'react';
-import ShowDiffer from './ShowDiffer/ShowDiffer';
-import EachAccountData from './EachAccountData/EachAccountData';
-import Pagination from "react-pagination-library";
-import "react-pagination-library/build/css/index.css"; //for css
-import './Account.css';
-import '../../animations.css';
+import React, {Component} from 'react';                             //  Get react
+import ShowDiffer from './ShowDiffer/ShowDiffer';                   //  Get stock difference representer
+import EachAccountData from './EachAccountData/EachAccountData';    //  Get each data-row
+import Pagination from "react-pagination-library";                  //  Get pagination
+import "react-pagination-library/build/css/index.css";              //  Get pagination-css
+import './Account.css';                                             //  Get page css
+import '../../animations.css';                                      //  Get css-animations
 
 class Account extends Component {
     constructor(props) {
         super(props);
-
+        this._isMounted = false;        // Property to track component mount status
         this.state = {
-            globalActualSum: 0,
-            globalAccountSum: 0,
-            globalSumChange: 0,
-            globalPercentChange: 0,
-            data: [],
-            actualData: [],
-            pageSize: 4,
-            currentPage: 1,
-            lastPage: 1
+            globalActualSum: 0,         // Total amount based on current shares
+            globalAccountSum: 0,        // Total amount based on users shares
+            data: [],                   // User's data from server
+            actualData: [],             // Current stocks from API
+            pageSize: 4,                // The amount of data per page
+            currentPage: 1,             // Starter page for pagination
+            lastPage: 1                 // Last page for pagination
         }
     }
 
+    //  Starting point for obtaining user data and current quotes from the exchange per minut
     componentDidMount() {
+        this._isMounted = true;
         this.getAccountData();  
-        setInterval(this.getAccountData, 60000);
+        this.intervalGuardian = setInterval(this.getAccountData, 60000);
     }
 
+    //  Turn off data acquisition per minute
+    componentWillUnmount() {
+        clearInterval(this.intervalGuardian);
+        this._isMounted = false;
+    }
+
+    //  Retrieve user's stock-portfolio data
     getAccountData = async() => {
         try {
             const response = await fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4/stocks');
             const data = await response.json();
             if(!data.length) {
-                return;
+                throw new Error("Network error!");                          
             }
-            this.setState( {
-                data, 
-                lastPage: +Math.ceil(data.length / this.state.pageSize)
-            }, this.globalAccFind);
+            this._isMounted && this.setState({                              //  State changes when component mounted
+                data,                                                       
+                lastPage: +Math.ceil(data.length / this.state.pageSize)     //  Set last page for pagination 
+            }, this.prepareUrlsForActualData);                                                                     
         }
-        catch(err) {
-            console.log(err);
+        catch(error) {
+            alert(error);
         }
     }
 
-    globalAccFind = () => {
+    //  Preparing urls for per stock and calculation of the user's stock amount
+    prepareUrlsForActualData = () => {
         let totalAccountSum = 0;
         const urlsToFetch = [];
         const {data} = this.state;
@@ -54,16 +62,16 @@ class Account extends Component {
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
         this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
-       
     }
 
+    //  Obtaining current stock quotes
     getActualData = async(urlsArray) => {
-        const uniqueUrls = [...new Set(urlsArray)];
-        Promise.all(uniqueUrls.map(u => fetch(u)))
-        .then(responses => Promise.all(responses.map(res => res.json())))
-        .then(actualData => {
+        const uniqueUrls = [...new Set(urlsArray)];                                         //  Get an array of unique elements 
+        Promise.all(uniqueUrls.map(u => fetch(u)))                                          //  Sending a request for each unique url
+        .then(responses => Promise.all(responses.map(res => res.json())))                   //  Processing all responses
+        .then(actualData => {               
             if(actualData.length === 0) {
-                throw "Empty response from https://financialmodelingprep.com";
+                throw new Error("Empty response from https://financialmodelingprep.com");
             }
             this.setState({actualData}, this.countGlobalPercentChange);
         })
@@ -72,26 +80,28 @@ class Account extends Component {
         });
     }
 
+    //  Calculation of the global actual amount
     countGlobalPercentChange = () => {
         const {data, actualData} = this.state;
         let globalActualSum = 0;
         data.forEach(element => {
-            const foundedActual = actualData.find(item => item.symbol === element.code );
-            const countOfBoughtStocks = Math.round(element.purchasePrice / element.amount);
-            globalActualSum += (foundedActual.profile.price) * countOfBoughtStocks;
+            const foundedActual = actualData.find(item => item.symbol === element.code );       //  Finding company via its actual data
+            const countOfBoughtStocks = Math.round(element.purchasePrice / element.amount);     //  Get number of purchased stocks
+            globalActualSum += (foundedActual.profile.price) * countOfBoughtStocks;             //  Get total amount based on current shares
         });
-        this.setState({globalActualSum})
+        this.setState({globalActualSum})                                                        
     }
 
+    //  Change current page for pagination
     changeCurrentPage = numPage => {
-        this.setState({ currentPage: numPage });
+        this._isMounted && this.setState({ currentPage: numPage });
     }
 
     render() {
         const {globalAccountSum,actualData, data, currentPage, lastPage, pageSize, globalActualSum} = this.state;
         const splitString = String(globalAccountSum.toFixed(2)).split('.');
-        const globalDifference = globalActualSum - globalAccountSum ;
-        const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);
+        const globalDifference = globalActualSum - globalAccountSum ;                       //  Get difference in currency between the current and user amounts
+        const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);        //  Get difference in percents between the current and user amounts
         return (
             <div>
                 <div className="Account-header">
@@ -100,7 +110,6 @@ class Account extends Component {
                             <span className="Account-balance-integer-part">{splitString[0]}</span>
                             <span className="Account-balance-decimal-part">.{splitString[1]}$</span>
                         </div>
-                        
                     </h1>
                     <h2 className="Account-header-center show-dif">
                         <ShowDiffer data={{first: globalDifference.toFixed(2), second: globalPercentDifference.toFixed(2)}} />
@@ -112,28 +121,25 @@ class Account extends Component {
                             (data.length && actualData.length) ? 
                             data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
                                 return (
-                                    <EachAccountData key={index} data={element} actualData={actualData}/>
+                                    <EachAccountData key={index} data={element} actualData={actualData}/>                   
                                 )
                             })
                             : null
                         }
-                    </div>
-
-                   
+                    </div>                   
                 </div>
-
                 <div className="Account-list">
-                        {
-                            (data.length && actualData.length) ? 
-                            <Pagination 
-                                currentPage={currentPage}
-                                totalPages={lastPage}
-                                changeCurrentPage={this.changeCurrentPage}
-                                theme="bottom-border"
-                            /> 
-                            : null
-                        }
-                    </div>
+                    {
+                        (data.length && actualData.length) ? 
+                        <Pagination 
+                            currentPage={currentPage}
+                            totalPages={lastPage}
+                            changeCurrentPage={this.changeCurrentPage}
+                            theme="bottom-border"
+                        /> 
+                        : null
+                    }
+                </div>
             </div>
         )
     }

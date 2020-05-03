@@ -5,18 +5,21 @@ import '../../../animations.css';
 
 class EachAccountData extends Component {
 
+    //  Receive a company name
     getFullName = () => {
         const {actualData, data} = this.props;
         const foundedActual = actualData.find(item => item.symbol === data.code );
         return foundedActual.profile.companyName
     }
 
+    //  Receive number of purchased stocks
     getCountOfBoughtStocks = () => {
         const {data} = this.props;
         const countOfBoughtStocks = Math.round(data.purchasePrice / data.amount);
         return countOfBoughtStocks
     }
 
+    //  Getting changes in currency and percentage
     getFirstAndSecond = () => {
         const {actualData, data} = this.props;
         const foundedActual = actualData.find(item => item.symbol === data.code );
