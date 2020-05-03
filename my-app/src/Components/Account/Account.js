@@ -105,7 +105,7 @@ class Account extends Component {
         return (
             <div>
                 <div className="Account-header">
-                    <h1 className="Account-header-center pulse">
+                    <h1 className="Account-header-center">
                         <div>
                             <span className="Account-balance-integer-part">{splitString[0]}</span>
                             <span className="Account-balance-decimal-part">.{splitString[1]}$</span>
