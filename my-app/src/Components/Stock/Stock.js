@@ -51,7 +51,7 @@ class Stock extends Component {
             <div className='stock'>
                 <div className='stock-input'>
                 <img src={'/assets/search-logo.png'} alt="magnifier"/>
-                <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'></input>
+                <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'/>
                 </div>
                 <div className='stock-arr'>
                     {   (data.length > 0) ?
