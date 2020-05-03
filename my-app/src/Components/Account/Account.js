@@ -103,7 +103,7 @@ class Account extends Component {
         const globalDifference = globalActualSum - globalAccountSum ;                       //  Get difference in currency between the current and user amounts
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);        //  Get difference in percents between the current and user amounts
         return (
-            <div>
+            <div className="Account-wrapper">
                 <div className="Account-header">
                     <h1 className="Account-header-center">
                         <div className="pulse">
