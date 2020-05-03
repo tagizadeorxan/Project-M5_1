@@ -20,6 +20,8 @@ class Stock extends Component {
         this.getData()
     }
     
+
+    //Function for getting datа from API and writing it to the state
     getData = () => {
           fetch("https://financialmodelingprep.com/api/v3/company/stock/list")
             .then(res => res.json())
@@ -27,20 +29,7 @@ class Stock extends Component {
                                         lastPage: +Math.ceil(data.symbolsList.length / this.state.pageSize)}));
     }
 
-    increasePage = () => {
-        if (this.state.currentPage !== this.state.lastPage) {
-            this.setState({ 
-                currentPage: this.state.currentPage + 1,
-            });
-        }
-    }
-
-    decreasePage = () => {
-        if (this.state.currentPage !== 1) {
-        this.setState({ currentPage: this.state.currentPage - 1 });
-        }
-    }
-
+    //Function to filter data by company symbols
     stockFilterHandler=(e)=>{
         const filtered=this.state.data.filter((item)=>{
             return e.target.value.toUpperCase() === item.symbol
@@ -48,20 +37,12 @@ class Stock extends Component {
         this.setState({
             searchInput: e.target.value,
             filteredData: filtered,
-
         })
     }
 
-    // pageHandler=(e)=>{
-    //     this.setState({
-    //         currentPage: +(e.target.innerText),
-    //     })
-    // }
-
+    //  Change current page for pagination
     changeCurrentPage = numPage => {
         this.setState({ currentPage: numPage });
-        //fetch a data
-        //or update a query to get data
     };
 
     render() {
@@ -73,7 +54,7 @@ class Stock extends Component {
                 <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'></input>
                 </div>
                 <div className='stock-arr'>
-                    {   (data.length || filteredData.length > 0) ?
+                    {   (data.length > 0) ?
                         (searchInput.length > 0 ? filteredData : data)
                         .slice(pageSize * (currentPage - 1), pageSize * currentPage)
                         .map((res, i) => {

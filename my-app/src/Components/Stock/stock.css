@@ -79,9 +79,8 @@ ul a{
 
 .loading{
     font-family: 'Roboto', sans-serif;
-    width: 10%;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
     font-size: 35px;
     margin-top: 35px;
 }
