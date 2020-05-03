@@ -24,6 +24,10 @@
     padding-top: 50px;
 }
 
+.Account-each-account-set-wrapper {
+    min-height: 280px;
+}
+
 .Account-balance-integer-part {
     color: #000000;
     font-size: 64px;
