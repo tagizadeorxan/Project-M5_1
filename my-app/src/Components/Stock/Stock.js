@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import EachStock from './eachStock/EachStock';
 import './stock.css';
 import Pagination from "react-pagination-library";
-import "react-pagination-library/build/css/index.css"; //for css
+import "react-pagination-library/build/css/index.css"; 
 
 
 

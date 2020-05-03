@@ -1,27 +1,29 @@
-import DatePicker from "react-datepicker";
-import './Buy';
-import "react-datepicker/dist/react-datepicker.css";
-import React, {Component} from 'react';
-import Chart from './Chart';
+import DatePicker from "react-datepicker";                    //  Get react date picker                   
+import "react-datepicker/dist/react-datepicker.css";          //  Get react date picker css
+import React, {Component} from 'react';                       //  Get react
+import Chart from './Chart';                                  //  Get chart component
 
 class DatePick extends Component {
   state = {
-    startDate: new Date(),
-    endDate : new Date(),
-    status: false,
+    startDate: new Date(),                //  Get current date 
+    endDate : new Date(),                 //  Get current date
+    status: false,                        //  Flaq which represent visibility of chart
   };
-      
+  
+  //  User change start date 
   handleChange = date => {
     this.setState({
       startDate: date,
-      status :true
+      status: true
     });
   };
 
+  //  User change end date
   handleEndDate = date => {
     this.setState({endDate:date,status:true});
   }
 
+  //  Lead to format YY:MM:DD
   formatDate = (d) => {
     let month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
     if (month.length < 2) month = '0' + month;
@@ -30,9 +32,9 @@ class DatePick extends Component {
   }
   
   render() {
-    let startdate = this.formatDate(this.state.startDate);
-    let enddate = this.formatDate(this.state.endDate);
-    let symbol = this.props.symbol;
+    let startdate = this.formatDate(this.state.startDate);            //  Get formatted starter date
+    let enddate = this.formatDate(this.state.endDate);                //  Get formatted end date
+    let symbol = this.props.symbol;                                   //  Get company symbol
     return (
       <>
         <div className="date-picker">
@@ -49,7 +51,7 @@ class DatePick extends Component {
             onChange={this.handleEndDate}
           />
         </div>
-        {this.state.status && <Chart startDate={startdate} endDate={enddate} symbol={symbol}/>}
+        {this.state.status && <Chart startDate={startdate} endDate={enddate} symbol={symbol}/>}    
       </>
     );
   }
