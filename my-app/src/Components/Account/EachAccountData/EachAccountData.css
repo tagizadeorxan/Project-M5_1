@@ -26,7 +26,9 @@
     overflow: hidden;
     text-overflow: clip;
     mask-image: linear-gradient(to right,#000 85%,rgba(0,0,0,0) 100%);
-    -webkit-mask-image: -webkit-linear-gradient(to right,#000 85%,rgba(0,0,0,0) 100%);    
+    -webkit-mask-image: -webkit-linear-gradient(to right,#000 85%,rgba(0,0,0,0) 100%); 
+    -o-mask-image: linear-gradient(to right,#000 85%,rgba(0,0,0,0) 100%);
+    -moz-mask-image: linear-gradient(to right,#000 85%,rgba(0,0,0,0) 100%);
 }
 
 .EachAccountData-stock-quantity {
