@@ -14,7 +14,7 @@
     font-weight: normal;
 }
 
-.Account-header-center:hover {
+.Account-header:hover {
     
         animation-name: pulse;
         -webkit-animation-name: pulse;	
