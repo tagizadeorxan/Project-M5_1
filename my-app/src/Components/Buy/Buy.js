@@ -8,30 +8,36 @@ class Buy extends Component {
 
     constructor(props) {
         super(props);
+        this._isMounted = false;
     }
 
     componentDidMount() {
-        this.getData();
+        this._isMounted = true;
+        this._isMounted && this.getData();
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+     }
 
     //function when - button pressing increse quantity of stock
     handleMinus = () => {
         let { data } = this.state;
-        let result = this.state.value > 1 ? this.setState({ value: this.state.value - 1 }, () => this.changePrice()) : null;
+        let result = (this.state.value > 1 &&  this._isMounted )?  this.setState({ value: this.state.value - 1 }, () => this.changePrice()) : null;
     }
 
     //function when + button pressing increse quantity of stock
 
     handlePlus = () => {
         let { data } = this.state;
-        this.setState({ value: this.state.value + 1 }, () => this.changePrice());
+        this._isMounted && this.setState({ value: this.state.value + 1 }, () => this.changePrice());
     }
 
 
     changePrice = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
-        this.setState({ price });
+        this._isMounted &&  this.setState({ price });
     }
 
 
@@ -40,7 +46,7 @@ class Buy extends Component {
     handleBuy = () => {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
-        this.setState({ price }, async () => {
+        this._isMounted &&  this.setState({ price }, async () => {
             const response = await this.writeServer();
 
             if (response) {
@@ -68,7 +74,7 @@ class Buy extends Component {
             })
         }
 
-        fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4", options)
+        this._isMounted &&     fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4", options)
             .then(data => data.json()).catch(err => alert("something wrong please try again later"));
     }
 
@@ -98,7 +104,7 @@ class Buy extends Component {
 
     getData = () => {
         let id = this.props.match.params.id;
-        fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
+        this._isMounted &&   fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
             let price = data.profile.price;
             this.setState({ data, price })
         }).catch(err => alert("something wrong please try again later"));
