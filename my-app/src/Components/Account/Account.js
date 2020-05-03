@@ -61,7 +61,7 @@ class Account extends Component {
             totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
-        this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
+        this._isMounted && this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
     }
 
     //  Obtaining current stock quotes
@@ -73,7 +73,7 @@ class Account extends Component {
             if(actualData.length === 0) {
                 throw new Error("Empty response from https://financialmodelingprep.com");
             }
-            this.setState({actualData}, this.countGlobalPercentChange);
+            this._isMounted && this.setState({actualData}, this.countGlobalPercentChange);
         })
         .catch(error => {
             alert(error);
@@ -89,7 +89,7 @@ class Account extends Component {
             const countOfBoughtStocks = Math.round(element.purchasePrice / element.amount);     //  Get number of purchased stocks
             globalActualSum += (foundedActual.profile.price) * countOfBoughtStocks;             //  Get total amount based on current shares
         });
-        this.setState({globalActualSum})                                                        
+        this._isMounted && this.setState({globalActualSum})                                                        
     }
 
     //  Change current page for pagination
