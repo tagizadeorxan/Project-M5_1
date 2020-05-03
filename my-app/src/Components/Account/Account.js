@@ -104,7 +104,7 @@ class Account extends Component {
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);        //  Get difference in percents between the current and user amounts
         return (
             <div>
-                <div className="Account-header">
+                <div className="Account-header floating">
                     <h1 className="Account-header-center">
                         <div>
                             <span className="Account-balance-integer-part">{splitString[0]}</span>
@@ -121,7 +121,7 @@ class Account extends Component {
                             (data.length && actualData.length) ? 
                             data.slice(pageSize * (currentPage - 1), pageSize * currentPage).map((element, index) => {
                                 return (
-                                    <EachAccountData key={index} data={element} actualData={actualData}/>                   
+                                    <EachAccountData  key={index} data={element} actualData={actualData}/>                   
                                 )
                             })
                             : null

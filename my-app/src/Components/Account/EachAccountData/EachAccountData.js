@@ -36,18 +36,18 @@ class EachAccountData extends Component {
         const splitString = String(data.purchasePrice.toFixed(2)).split('.');
         return (
             (data && actualData) ?
-            <div className="EachAccountData" >
-                <div className="EachAccountData-Company-Code slideUp">{data.code}</div>
-                <div className="EachAccountData-Company-Fullname slideLeft">{this.getFullName()}</div>  
-                <div className="EachAccountData-stock-quantity slideRight">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
-                <div className="EachAccountData-price-variable slideRight">
+            <div className="EachAccountData floating" >
+                <div className="EachAccountData-Company-Code">{data.code}</div>
+                <div className="EachAccountData-Company-Fullname">{this.getFullName()}</div>  
+                <div className="EachAccountData-stock-quantity">{this.getCountOfBoughtStocks()}<span> pcs</span></div>
+                <div className="EachAccountData-price-variable">
                     <div>
                         <span className="EachAccountData-price-integer">{splitString[0]}</span> 
                         .
                         <span className="EachAccountData-price-decimal">{splitString[1]}</span>         
                     </div>      
                 </div>
-                <div className="EachAccountData-price-difference stretchRight">
+                <div className="EachAccountData-price-difference">
                     <ShowDiffer data={this.getFirstAndSecond()} />
                 </div>
             </div>
