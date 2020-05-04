@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EachStock from './eachStock/EachStock';
+import EachStock from './EachStock/EachStock';
 import './stock.css';
 import Pagination from "react-pagination-library";
 import "react-pagination-library/build/css/index.css"; 
@@ -44,6 +44,8 @@ class Stock extends Component {
         const filtered=this.state.data.filter((item)=>{
             return e.target.value.toUpperCase() === item.symbol
         })
+ 
+            
         this._isMounted && this.setState({
             searchInput: e.target.value,
             filteredData: filtered,
@@ -64,14 +66,19 @@ class Stock extends Component {
                 <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'/>
                 </div>
                 <div className='stock-arr'>
-                    {   (data.length > 0) ?
-                        (searchInput.length > 0 ? filteredData : data)
-                        .slice(pageSize * (currentPage - 1), pageSize * currentPage)
+                    {   
+                        (data.length > 0) ?
+                        (searchInput.length > 0 ? filteredData.length<1 ? <h1 className="not-found">Not found</h1> : 
+                        filteredData.slice(pageSize * (currentPage - 1), pageSize * currentPage)
                         .map((res, i) => {
                             return <EachStock key={i} data={res}/>
-                        }):
-                        <div className='loading'>Loading...</div>
-                    }
+                        }) : data.slice(pageSize * (currentPage - 1), pageSize * currentPage)
+                        .map((res, i) => {
+                            return <EachStock key={i} data={res}/>
+                        }))
+                        :
+                        <div className='loading'>Loading...</div> 
+                   } 
                 </div>
                 
                 <div className="list">
