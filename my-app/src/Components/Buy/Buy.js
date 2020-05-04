@@ -47,8 +47,10 @@ class Buy extends Component {
         let { data } = this.state;
         let price = this.state.value * data.profile.price;
         this._isMounted &&  this.setState({ price }, async () => {
+            let result = await this.getBalance();
+            if(result>price){
+                console.log(result);
             const response = await this.writeServer();
-
             if (response) {
                 alert("you bought successfully, check your account");
                 const response = fetch('https://5e8da89e22d8cd0016a798db.mockapi.io/users/4')
@@ -58,10 +60,21 @@ class Buy extends Component {
                         this.props.history.goBack();
                     }).catch(err => alert("something wrong please try again later"))
             } 
-        });
+       } else {
+        
+           alert("not enough balance to buy");
+       }});
 
     }
 
+
+    async getBalance () {
+        let result = 0;
+        const response = await fetch("https://5e8da89e22d8cd0016a798db.mockapi.io/users/4")
+        .then(data => data.ok ? data.json() :null).then(data=> result = data.currentBalance).catch(err => alert("something wrong please try again later"));
+        console.log(result);
+        return result;
+    } 
 
     // after success buy action updating balance of user in api
 
