@@ -119,7 +119,7 @@ class Buy extends Component {
         let id = this.props.match.params.id;
         this._isMounted &&   fetch(`https://financialmodelingprep.com/api/v3/company/profile/${id}`).then(data => data.json()).then(data => {
             let price = data.profile.price;
-            this.setState({ data, price })
+            this._isMounted && this.setState({ data, price })
         }).catch(err => alert("something wrong please try again later"));
     }
 

@@ -61,7 +61,7 @@ class Account extends Component {
             totalAccountSum += (Number(element.purchasePrice));
             urlsToFetch.push(`https://financialmodelingprep.com/api/v3/company/profile/${element.code}`);
         });
-        this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
+        this._isMounted && this.setState({ globalAccountSum: totalAccountSum }, () => {  this.getActualData(urlsToFetch); });
     }
 
     //  Obtaining current stock quotes
@@ -73,7 +73,7 @@ class Account extends Component {
             if(actualData.length === 0) {
                 throw new Error("Empty response from https://financialmodelingprep.com");
             }
-            this.setState({actualData}, this.countGlobalPercentChange);
+            this._isMounted && this.setState({actualData}, this.countGlobalPercentChange);
         })
         .catch(error => {
             alert(error);
@@ -89,7 +89,7 @@ class Account extends Component {
             const countOfBoughtStocks = Math.round(element.purchasePrice / element.amount);     //  Get number of purchased stocks
             globalActualSum += (foundedActual.profile.price) * countOfBoughtStocks;             //  Get total amount based on current shares
         });
-        this.setState({globalActualSum})                                                        
+        this._isMounted && this.setState({globalActualSum})                                                        
     }
 
     //  Change current page for pagination
@@ -103,10 +103,10 @@ class Account extends Component {
         const globalDifference = globalActualSum - globalAccountSum ;                       //  Get difference in currency between the current and user amounts
         const globalPercentDifference = ((globalDifference * 100)/globalAccountSum);        //  Get difference in percents between the current and user amounts
         return (
-            <div>
-                <div className="Account-header floating">
+            <div className="Account-wrapper">
+                <div className="Account-header">
                     <h1 className="Account-header-center">
-                        <div>
+                        <div className="pulse">
                             <span className="Account-balance-integer-part">{splitString[0]}</span>
                             <span className="Account-balance-decimal-part">.{splitString[1]}$</span>
                         </div>

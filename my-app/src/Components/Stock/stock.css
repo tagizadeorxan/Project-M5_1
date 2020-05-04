@@ -3,7 +3,7 @@
     top:64px;
     width: 100%;
     background: white;
-    padding-bottom: 130px;
+    padding-bottom: 80px;
 }
 .stock-input{
     width: 360px;
@@ -28,7 +28,7 @@
     font-size: 25px;
     line-height: 24px;
     margin-left: 11px;
-    width: 90%;
+    width: 80%;
     outline: 0;
 }
 

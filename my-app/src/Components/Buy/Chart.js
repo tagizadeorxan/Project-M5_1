@@ -1,22 +1,23 @@
 
-import React, { Component } from 'react';
-import {AreaChart, Area, XAxis, YAxis, Tooltip} from 'recharts';
-import './Buy';
+import React, { Component } from 'react';                                   //  Get react
+import {AreaChart, Area, XAxis, YAxis, Tooltip} from 'recharts';            //  Get required objs for chart                                                             
 
 class Chart extends Component {
     state={
-        data:[],
-        isChange: false
+        data:[],                    //  Contains data in selected period
+        isChange: false             //  Сrutch for prevent render 
     }
 
     componentDidMount(){
         this.getData();
     }
 
+    //  Start getting data when period is changed
     componentWillReceiveProps(){
         this.setState({isChange: !this.state.isChange}, ()=> { this.getData(); });
     }
  
+    //  Get data in selected period 
     getData = () => {
         fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${this.props.symbol}?from=${this.props.startDate}&to=${this.props.endDate}`)
         .then(res => res.json())

@@ -2,11 +2,16 @@ import React, {Component} from 'react';
 import EachStock from './eachStock/EachStock';
 import './stock.css';
 import Pagination from "react-pagination-library";
-import "react-pagination-library/build/css/index.css"; //for css
+import "react-pagination-library/build/css/index.css"; 
 
 
 
 class Stock extends Component {
+    constructor(props) {
+        super(props);
+        this._isMounted = false;
+    }
+
     state={
         data:[],
         filteredData:[],
@@ -17,16 +22,21 @@ class Stock extends Component {
         searchInput:''
     }
     componentDidMount(){
+        this._isMounted = true;
         this.getData()
     }
     
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     //Function for getting datа from API and writing it to the state
     getData = () => {
-          fetch("https://financialmodelingprep.com/api/v3/company/stock/list")
-            .then(res => res.json())
-            .then(data => this.setState({ data: data.symbolsList,
-                                        lastPage: +Math.ceil(data.symbolsList.length / this.state.pageSize)}));
+        this._isMounted && fetch("https://financialmodelingprep.com/api/v3/company/stock/list")
+        .then(res => res.json())
+        .then(data => {
+            this._isMounted && this.setState({ data: data.symbolsList, lastPage: +Math.ceil(data.symbolsList.length / this.state.pageSize)});
+        });          
     }
 
     //Function to filter data by company symbols
@@ -34,7 +44,7 @@ class Stock extends Component {
         const filtered=this.state.data.filter((item)=>{
             return e.target.value.toUpperCase() === item.symbol
         })
-        this.setState({
+        this._isMounted && this.setState({
             searchInput: e.target.value,
             filteredData: filtered,
         })
@@ -42,7 +52,7 @@ class Stock extends Component {
 
     //  Change current page for pagination
     changeCurrentPage = numPage => {
-        this.setState({ currentPage: numPage });
+        this._isMounted && this.setState({ currentPage: numPage });
     };
 
     render() {
