@@ -61,6 +61,7 @@ class Stock extends Component {
         const { data, pageSize, currentPage,lastPage,searchInput,filteredData } = this.state;
         return (
             <div className='stock'>
+                <div className="stock-header"></div>
                 <div className='stock-input'>
                 <img src={'/assets/search-logo.png'} alt="magnifier"/>
                 <input onInput={this.stockFilterHandler} type='text' placeholder='enter company ticker'/>

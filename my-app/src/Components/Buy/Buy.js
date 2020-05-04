@@ -134,7 +134,7 @@ class Buy extends Component {
             <div className="main">
 
                 <div className="container">
-                    <div><i className="glyphicon glyphicon-menu-left"></i><button onClick={() => this.props.history.goBack()}>Back</button></div>
+                    <div style={{left: '5%'}}><i className="glyphicon glyphicon-menu-left"></i><button onClick={() => this.props.history.goBack()}>Back</button></div>
                     <div><p>{data.profile.companyName}</p></div>
                 </div>
                 <div className="buy-defaut-price"><p>{splitstring[0]}.</p><span>{splitstring[1]}$</span></div>

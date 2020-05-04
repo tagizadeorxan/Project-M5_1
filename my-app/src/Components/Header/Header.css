@@ -1,11 +1,12 @@
 .Header-wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .Header-wrapper nav {
     min-width: 350px;
     padding-top: 10px;
+    margin-left: 5%;
 }
 
 .Header-wrapper ul {
@@ -32,6 +33,7 @@
 }
 
 .Header-image-wrapper {
+    margin-right: 5%;
     min-width: 150px ;
     padding-top: 25px;
 }
